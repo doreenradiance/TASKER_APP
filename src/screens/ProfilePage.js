@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function ProfilePage() {
