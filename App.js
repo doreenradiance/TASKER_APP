@@ -4,6 +4,7 @@ import StartupPage from './src/screens/StartupPage';
 import SignupPage from './src/screens/SignupPage'
 import ProfilePage from './src/screens/ProfilePage';
 import TasksPage from './src/screens/TasksPage';
+import TaskDetail from "./src/screens/TaskDetail";
 
 export default function App() {
   return(
@@ -12,6 +13,6 @@ export default function App() {
     // <SignupPage/>
     // <ProfilePage/>
     // <TasksPage/>
-    <TasksPage/>
+    <TaskDetail/>
   )
 }
