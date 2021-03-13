@@ -5,6 +5,7 @@ import SignupPage from './src/screens/SignupPage'
 import ProfilePage from './src/screens/ProfilePage';
 import TasksPage from './src/screens/TasksPage';
 import TaskDetail from "./src/screens/TaskDetail";
+import AccountPage from "./src/screens/AccountPage";
 
 export default function App() {
   return(
@@ -13,6 +14,7 @@ export default function App() {
     // <SignupPage/>
     // <ProfilePage/>
     // <TasksPage/>
-    <TaskDetail/>
+    // <TaskDetail/>
+    <AccountPage/>
   )
 }
