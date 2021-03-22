@@ -17,15 +17,45 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Startup" component={StartupPage} />
-        <Stack.Screen name="Login" component={LoginPage} />
-        <Stack.Screen name="Signup" component={SignupPage} />
-        <Stack.Screen name="Profile" component={ProfilePage} />
-        <Stack.Screen name="Tasks" component={TasksPage} />
-        <Stack.Screen name="Detail" component={TaskDetail} />
-        <Stack.Screen name="Account" component={AccountPage} />
-        <Stack.Screen name="Activity" component={ActivityPage} />
-        <Stack.Screen name="Withdraw" component={WithdrawalPage} />
+        <Stack.Screen
+        options={{
+          header: () => null
+        }}
+         name="Startup" component={StartupPage} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}
+        name="Login" component={LoginPage} />
+        <Stack.Screen
+        options={{
+          header: () => null
+        }}
+         name="Signup" component={SignupPage} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}name="Profile" component={ProfilePage} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}name="Tasks" component={TasksPage} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}name="Detail" component={TaskDetail} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}name="Account" component={AccountPage} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}name="Activity" component={ActivityPage} />
+        <Stack.Screen 
+        options={{
+          header: () => null
+        }}name="Withdraw" component={WithdrawalPage} />
 
       </Stack.Navigator>
 
