@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, } from '@expo/vector-icons';
 
-export default function WithdrawalPage() {
+export default function WithdrawalPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 70 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate('Account')
+                }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 20 }} />
                 </TouchableOpacity>
                 <Text style={{ color: "#429ef5", marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>Cash Withdrawal</Text>
