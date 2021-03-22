@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import {StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { AntDesign,  } from '@expo/vector-icons';
 
 export default function WithdrawalPage() {
     return (
