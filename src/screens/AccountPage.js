@@ -2,11 +2,13 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-export default function AccountPage() {
+export default function AccountPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Profile")
+                }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
                 <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Account</Text>

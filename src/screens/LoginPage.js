@@ -3,11 +3,13 @@ import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-nativ
 import { AntDesign } from '@expo/vector-icons';
 
 
-export default function LoginPage() {
+export default function LoginPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Startup")
+                }}>
                     <AntDesign name="back" size={24} color="white" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.login}>LOG IN</Text>
@@ -32,7 +34,9 @@ export default function LoginPage() {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.loginTextButton}>
+            <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Profile")
+                }}style={styles.loginTextButton}>
                 <Text style={styles.loginText}>Log In</Text>
             </TouchableOpacity>
 

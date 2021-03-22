@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
-export default function TaskDetail() {
+export default function TaskDetail({navigation}) {
     return (
         <View style={styles.container}>
             <View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate('Tasks')
+                }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.emptyText}></Text>

@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-export default function ProfilePage() {
+export default function ProfilePage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Startup")
+                }}>
                     <AntDesign name="back" size={24} color="black" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.profile}>PROFILE</Text>
@@ -18,7 +20,11 @@ export default function ProfilePage() {
             <Text style={styles.location}>Los Angeles,City</Text>
 
             <View style={styles.info}>
+            <TouchableOpacity onPress={()=>{
+                navigation.navigate('Tasks')
+            }}>
                 <Text style={{ fontSize: 17, marginLeft: 45 }}>Tasks</Text>
+                </TouchableOpacity>
                 <AntDesign name="right" size={24} color="black" style={{ marginLeft: 210 }} />
             </View>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>

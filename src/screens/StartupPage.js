@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function StartupPage() {
+export default function StartupPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -12,11 +12,15 @@ export default function StartupPage() {
 
             <View style={styles.footer}>
                 <View>
-                <TouchableOpacity style={styles.signupTextButton}>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Signup")
+                }}style={styles.signupTextButton}>
                     <Text style={styles.signupText}>Sign Up</Text>
                 </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.loginTextButton}>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Login")
+                }}style={styles.loginTextButton}>
                     <Text style={styles.loginText}>Log In</Text>
                 </TouchableOpacity>
             </View>

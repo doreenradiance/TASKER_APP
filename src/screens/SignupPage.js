@@ -2,15 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-export default function StartupPage() {
+export default function StartupPage({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-            <TouchableOpacity>
-                <AntDesign name="back" size={24} color="white" style={styles.icon} />
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate("Startup")
+                }}>
+                    <AntDesign name="back" size={24} color="white" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.login}>SIGN UP</Text>
             </View>
+            
             <View style={styles.inputs}>
                 <View style={styles.email}>
                     <Text>Email</Text>
@@ -37,13 +40,15 @@ export default function StartupPage() {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.loginTextButton}>
-                <Text style={styles.loginText}>Sign up</Text>
+            <TouchableOpacity
+                onPress={() => { navigation.navigate("Profile") }}
+                style={styles.signupTextButton}>
+                <Text style={styles.signupText}>Sign up</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
-                    <Text style={{color:"#429ef5",marginLeft:5}}>Sign up</Text>
+                <Text style={{ color: "#429ef5", marginLeft: 5 }}>Sign up</Text>
 
             </View>
         </View>
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
     input3: {
         marginVertical: 15
     },
-    loginTextButton: {
+    signupTextButton: {
         backgroundColor: "#429ef5",
         height: 50,
         width: 250,
@@ -95,14 +100,14 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginTop: 70
     },
-    loginText: {
+    signupText: {
         color: "white",
         alignSelf: "center",
         marginTop: 10,
-        fontSize:20
+        fontSize: 20
     },
-    footer:{
-        flexDirection:"row",
-        marginTop:30
+    footer: {
+        flexDirection: "row",
+        marginTop: 30
     }
 })
