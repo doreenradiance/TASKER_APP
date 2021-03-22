@@ -7,7 +7,7 @@ export default function TaskDetail({navigation}) {
         <View style={styles.container}>
             <View>
                 <TouchableOpacity onPress={()=>{
-                    navigation.navigate('Tasks')
+                    navigation.navigate("Tasks")
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
