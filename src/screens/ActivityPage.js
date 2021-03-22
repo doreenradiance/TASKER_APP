@@ -1,12 +1,14 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
-export default function ActivityPage() {
+export default function ActivityPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate('Tasks')
+                }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
                 <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Activity</Text>
