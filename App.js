@@ -15,10 +15,10 @@ export default function App() {
     // <LoginPage/>
     // <SignupPage/>
     // <ProfilePage/>
-    // <TasksPage/>
+    <TasksPage/>
     // <TaskDetail/>
     // <AccountPage/>
     // <ActivityPage/>
-    <WithdrawalPage/>
+    // <WithdrawalPage/>
   )
 }
