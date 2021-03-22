@@ -7,9 +7,12 @@ export default function LoginPage() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <AntDesign name="back" size={24} color="white" style={styles.icon} />
+                <TouchableOpacity>
+                    <AntDesign name="back" size={24} color="white" style={styles.icon} />
+                </TouchableOpacity>
                 <Text style={styles.login}>LOG IN</Text>
             </View>
+
 
             <View style={styles.inputs}>
                 <View style={styles.email}>
@@ -35,7 +38,7 @@ export default function LoginPage() {
 
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
-                    <Text style={{color:"#429ef5",marginLeft:5}}>Sign up</Text>
+                <Text style={{ color: "#429ef5", marginLeft: 5 }}>Sign up</Text>
 
             </View>
         </View>
@@ -88,10 +91,10 @@ const styles = StyleSheet.create({
         color: "white",
         alignSelf: "center",
         marginTop: 10,
-        fontSize:20
+        fontSize: 20
     },
-    footer:{
-        flexDirection:"row",
-        marginTop:30
+    footer: {
+        flexDirection: "row",
+        marginTop: 30
     }
 })

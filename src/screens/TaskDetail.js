@@ -6,9 +6,12 @@ export default function TaskDetail() {
     return (
         <View style={styles.container}>
             <View>
-                <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                <TouchableOpacity>
+                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                </TouchableOpacity>
                 <Text style={styles.emptyText}></Text>
             </View>
+
 
             <Text style={{ alignSelf: "center", color: "#429ef5", fontSize: 25, marginTop: 25 }}>Fix Plumbing</Text>
             <Entypo name="location" size={24} color="#429ef5" style={{ alignSelf: "center", marginTop: 30 }} />
@@ -36,7 +39,7 @@ export default function TaskDetail() {
                 <Text>GHC 70</Text>
             </View>
 
-            <View style={{flexDirection:"row",marginTop:40}}>
+            <View style={{ flexDirection: "row", marginTop: 40 }}>
                 <TouchableOpacity>
                     <View style={{
                         backgroundColor: "red", width: 130, height: 45,

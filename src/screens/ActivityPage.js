@@ -6,9 +6,12 @@ export default function ActivityPage() {
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
-                <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
+                <TouchableOpacity>
+                    <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
+                </TouchableOpacity>
                 <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Activity</Text>
             </View>
+
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 10 }}>
@@ -56,7 +59,7 @@ export default function ActivityPage() {
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 300, marginTop: 15, marginLeft: 25 }}></Text>
 
 
-            <Text style={{color:"#429ef5", textAlign:"center",marginTop:20}}>See All</Text>
+            <Text style={{ color: "#429ef5", textAlign: "center", marginTop: 20 }}>See All</Text>
         </View>
     )
 }

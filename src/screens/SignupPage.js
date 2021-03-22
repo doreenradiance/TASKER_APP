@@ -6,7 +6,9 @@ export default function StartupPage() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
+            <TouchableOpacity>
                 <AntDesign name="back" size={24} color="white" style={styles.icon} />
+                </TouchableOpacity>
                 <Text style={styles.login}>SIGN UP</Text>
             </View>
             <View style={styles.inputs}>

@@ -7,6 +7,9 @@ export default function TasksPage() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
+                <TouchableOpacity>
+            <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 20 }} />
+            </TouchableOpacity>
                 <Text style={{ color: "#429ef5", fontSize: 25, marginRight: 150 }}>Tasks</Text>
                 <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
                 <AntDesign name="ellipsis1" size={30} color="#429ef5" style={{ marginTop: 5 }} />
