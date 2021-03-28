@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View, Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { connect } from 'react-redux'
+import { getAllTasks } from '../redux/actions/taskActions';
+import TaskItem from '../components/TaskItem';
 
 
 
-export default function TasksPage({navigation}) {
+
+function TasksPage({navigation, getAllTasks, appState }) {
+    const {tasks} = appState
+
+    useEffect(() => {
+        getAllTasks()
+    }, [])
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -20,7 +30,17 @@ export default function TasksPage({navigation}) {
             <Text style={styles.emptyText}></Text>
 
             <ScrollView>
-                <View style={styles.tasks} >
+                {
+                    tasks[0]? tasks.map(task => {
+                        return <TaskItem key={task.id} data={task} navigation={navigation} />
+                    })
+                    : 
+                    <View>
+                        <Text>There are no tasks Available</Text>
+                    </View>
+                }
+
+                {/* <View style={styles.tasks} >
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('Detail')
                     }}>
@@ -125,17 +145,17 @@ export default function TasksPage({navigation}) {
                 <Text style={styles.emptyText}></Text>
 
                 <View style={styles.tasks} >
-                        <TouchableOpacity onPress={() => {
-                            navigation.navigate('Detail')
-                        }}>
-                    <View style={{ flexDirection: "row", marginRight: 50 }}>
-                            <Text style={{ marginRight: 120 }}>Fix fridge</Text>
-                            <Text style={{ fontWeight: "bold", fontSize: 20, marginLeft: 45 }}>GHC80</Text>
-                    </View>
-                        </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('Detail')
+                    }}>
+                        <View style={{ flexDirection: "row", marginRight: 50 }}>
+                                <Text style={{ marginRight: 120 }}>Fix fridge</Text>
+                                <Text style={{ fontWeight: "bold", fontSize: 20, marginLeft: 45 }}>GHC80</Text>
+                        </View>
+                    </TouchableOpacity>
                     <Text>Spintex</Text>
                 </View>
-                <Text style={styles.emptyText}></Text>
+                <Text style={styles.emptyText}></Text> */}
 
 
 
@@ -173,3 +193,13 @@ const styles = StyleSheet.create({
         marginTop: 15
     }
 })
+
+const mapStateToProps = (state) => {
+    return ({
+        appState: state
+    })
+}
+
+
+
+export default connect(mapStateToProps, {getAllTasks})(TasksPage)

@@ -2,7 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
-export default function TaskDetail({navigation}) {
+export default function TaskDetail({navigation, route}) {
+    
+    const {title, location, description, time, amount} = route.params.task || {}
+    const date = time.toDate().toString()
+
     return (
         <View style={styles.container}>
             <View>
@@ -15,30 +19,30 @@ export default function TaskDetail({navigation}) {
             </View>
 
 
-            <Text style={{ alignSelf: "center", color: "#429ef5", fontSize: 25, marginTop: 25 }}>Fix Plumbing</Text>
+            <Text style={{ alignSelf: "center", color: "#429ef5", fontSize: 25, marginTop: 25 }}>{title ||'Fix Plumbing'}</Text>
             <Entypo name="location" size={24} color="#429ef5" style={{ alignSelf: "center", marginTop: 30 }} />
-            <Text style={{ alignSelf: "center", marginVertical: 5 }}>#Los Angeles City</Text>
+            <Text style={{ alignSelf: "center", marginVertical: 5 }}>{location || '#Los Angeles City'}</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginVertical: 10, marginLeft: 25 }}></Text>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 20 }}>
                 <Fontisto name="table-2" size={25} color="#429ef5" style={{ marginTop: 10, marginRight: 5 }} />
                 <View style={{ marginTop: 8, marginLeft: 25 }}>
-                    <Text>Lorem Ipsum is simply dummy</Text>
-                    <Text>text of the printing and</Text>
+                    <Text>{description || 'Lorem Ipsum is simply dummy'}</Text>
+                    {/* <Text>text of the printing and</Text>
                     <Text>typesetting industry.Lorem Ipsum is simply </Text>
                     <Text>dummy text of the printing and</Text>
-                    <Text>typesetting industry. </Text>
+                    <Text>typesetting industry. </Text> */}
                 </View>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 50 }}>
                 <Ionicons name="alarm" size={25} color="#429ef5" style={{ marginRight: 35 }} />
-                <Text>Today, 8:25am</Text>
+                <Text>{date || 'Today, 8:25am'}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
                 <FontAwesome5 name="sort-amount-up" size={24} color="#429ef5" style={{ marginRight: 35 }} />
-                <Text>GHC 70</Text>
+                <Text>{`GHC ${amount}`}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginTop: 40 }}>

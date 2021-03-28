@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import {connect} from 'react-redux'
+import { dispatcher, login } from '../redux/actions/authActions';
 
 
-export default function LoginPage({navigation}) {
+function LoginPage({navigation, login}) {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const onLogin = () => {
+        login(email, password)
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -22,6 +32,8 @@ export default function LoginPage({navigation}) {
                     <TextInput style={styles.input}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Email"
+                        value={email}
+                        onChangeText={(email) => setEmail(email)}
                     />
                 </View>
 
@@ -30,19 +42,26 @@ export default function LoginPage({navigation}) {
                     <TextInput style={styles.input2}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Password"
+                        value={password}
+                        onChangeText={(password) => setPassword(password)}
                     />
                 </View>
             </View>
 
-            <TouchableOpacity onPress={()=>{
-                    navigation.navigate("Profile")
+            <TouchableOpacity 
+                disabled={!email || !password}
+                onPress={()=>{
+                    navigation.navigate("Tasks")
                 }}style={styles.loginTextButton}>
                 <Text style={styles.loginText}>Log In</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
-                <Text style={{ color: "#429ef5", marginLeft: 5 }}>Sign up</Text>
+                <Text 
+                    style={{ color: "#429ef5", marginLeft: 5 }}
+                    onPress={() => navigation.navigate('Signup')}
+                >Sign up</Text>
 
             </View>
         </View>
@@ -102,3 +121,12 @@ const styles = StyleSheet.create({
         marginTop: 30
     }
 })
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+} 
+
+
+export default connect(mapStateToProps, {login, dispatcher} )(LoginPage)

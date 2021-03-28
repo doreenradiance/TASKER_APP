@@ -13,6 +13,7 @@ import AccountPage from "./src/screens/AccountPage";
 import ActivityPage from "./src/screens/ActivityPage";
 import WithdrawalPage from "./src/screens/WithdrawalPage";
 import store from './src/redux/store';
+import FlashMessage from "react-native-flash-message";
 
 const Stack = createStackNavigator()
 
@@ -80,8 +81,8 @@ export default function App() {
           />
 
         </Stack.Navigator>
-
       </NavigationContainer>
+      <FlashMessage position='top' />
     </Provider>
   )
 }

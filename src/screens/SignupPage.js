@@ -48,7 +48,10 @@ export default function StartupPage({ navigation }) {
 
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
-                <Text style={{ color: "#429ef5", marginLeft: 5 }}>Sign up</Text>
+                <Text 
+                    style={{ color: "#429ef5", marginLeft: 5 }}
+                    onPress={() => navigation.navigate("Login")}
+                >Login</Text>
 
             </View>
         </View>
