@@ -1,13 +1,25 @@
 import firebase from '../../firebase/firebase'
 import { showMessage } from 'react-native-flash-message'
 
+const db = firebase.firestore()
+
 
 export function createEmailAccount(email, password, cb) {
     return async (dispatch) => {
         try {
-            console.log("working")
+            
             const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
-            dispatch(dispatcher("log_in",user))
+            await db.collection('profiles').doc(user.user.uid).set({
+               name: 'John Doe',
+               email: user.user.email,
+               phone: '',
+               tasksCreated: [],
+               tasksDone: [],
+               account: 0 
+            })
+
+            const profile = await db.collection('profiles').doc(user.user.uid).get()
+            dispatch(dispatcher("log_in", {...profile.data(), id: profile.id }))
             cb()
         }catch (e) {
             console.log(e)
