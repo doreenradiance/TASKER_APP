@@ -1,8 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import {connect} from 'react-redux'
+import { dispatcher, createEmailAccount } from '../redux/actions/authActions';
 
-export default function StartupPage({ navigation }) {
+
+function StartupPage({ navigation, createEmailAccount }) {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const onSignup = () => {
+        console.log(email, password)
+        createEmailAccount(email, password, () => {
+            navigation.navigate("Profile")
+        })
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -20,6 +33,8 @@ export default function StartupPage({ navigation }) {
                     <TextInput style={styles.input}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Email"
+                        value={email}
+                        onChangeText={email => setEmail(email)}
                     />
                 </View>
 
@@ -28,6 +43,9 @@ export default function StartupPage({ navigation }) {
                     <TextInput style={styles.input2}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Password"
+                        value={password}
+                        secureTextEntry={true}
+                        onChangeText={password => setPassword(password)}
                     />
                 </View>
 
@@ -36,12 +54,14 @@ export default function StartupPage({ navigation }) {
                     <TextInput style={styles.input3}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Confirm Password"
+                        secureTextEntry={true}
                     />
                 </View>
             </View>
 
             <TouchableOpacity
-                onPress={() => { navigation.navigate("Profile") }}
+                disabled={!email || !password}
+                onPress={() => { onSignup() }}
                 style={styles.signupTextButton}>
                 <Text style={styles.signupText}>Sign up</Text>
             </TouchableOpacity>
@@ -114,3 +134,13 @@ const styles = StyleSheet.create({
         marginTop: 30
     }
 })
+
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+}
+
+
+export default connect(mapStateToProps, {createEmailAccount})(StartupPage)

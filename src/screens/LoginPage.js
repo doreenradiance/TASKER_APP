@@ -11,7 +11,9 @@ function LoginPage({navigation, login}) {
     const [password, setPassword] = useState('')
 
     const onLogin = () => {
-        login(email, password)
+        login(email, password, () => {
+            navigation.navigate("Tasks")
+        })
     }
 
     return (
@@ -51,7 +53,7 @@ function LoginPage({navigation, login}) {
             <TouchableOpacity 
                 disabled={!email || !password}
                 onPress={()=>{
-                    navigation.navigate("Tasks")
+                    onLogin()
                 }}style={styles.loginTextButton}>
                 <Text style={styles.loginText}>Log In</Text>
             </TouchableOpacity>

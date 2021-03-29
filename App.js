@@ -82,7 +82,7 @@ export default function App() {
 
         </Stack.Navigator>
       </NavigationContainer>
-      <FlashMessage position='top' />
+      <FlashMessage position='top' duration={3000} />
     </Provider>
   )
 }
