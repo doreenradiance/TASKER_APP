@@ -1,8 +1,15 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
+import {connect } from 'react-redux'
+import AccountHistoryItem from '../components/AccountHistoryItem';
+import { numberWithCommas } from '../utils';
 
-export default function AccountPage({ navigation }) {
+function AccountPage({ navigation, appState }) {
+    const {user} = appState
+    const {account, accountHistory} = user
+    const balance = numberWithCommas(account)
+
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
@@ -17,7 +24,7 @@ export default function AccountPage({ navigation }) {
             <ScrollView>
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 20 }}></Text>
                 <Text style={{ textAlign: "center", marginTop: 20 }}>Current Balance</Text>
-                <Text style={{ textAlign: "center", marginTop: 10, fontSize: 25 }}>GHC23, 012.65</Text>
+                <Text style={{ textAlign: "center", marginTop: 10, fontSize: 25 }}>{`GHC${balance ||'23, 012.65'}`}</Text>
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 20 }}></Text>
 
                 <View style={{ flexDirection: "row", marginTop: 20, }}>
@@ -33,15 +40,26 @@ export default function AccountPage({ navigation }) {
             <Text style={{ marginLeft: 20, marginTop: 10, color: "#807878" }}>History</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
 
-            <View style={{ flexDirection: "row", marginLeft: 25, marginTop: 20 }}>
+            {
+                accountHistory[0]? accountHistory.map(itm => {
+                   return <AccountHistoryItem key={itm.date} data={itm} />
+                }) 
+                : 
+                <View >
+                    <Text style={{textAlign: 'center'}}>There are no activities yet</Text>
+                </View>
+
+            }
+
+            {/* <View style={{ flexDirection: "row", marginLeft: 25, marginTop: 20 }}>
                 <AntDesign name="arrowup" size={23} color="green" style={{ marginRight: 15, marginTop: 10 }} />
                 <Text style={{ marginRight: 50 }}>Payment Received</Text>
                 <Text style={{ marginLeft: 30, fontSize: 20 }}>GHC65</Text>
             </View>
             <Text style={{ marginLeft: 75 }}>Today, 12:45am</Text>
-            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10, marginLeft: 20 }}></Text>
+            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10, marginLeft: 20 }}></Text> */}
 
-            <View style={{ flexDirection: "row", marginLeft: 25, marginTop: 20 }}>
+            {/* <View style={{ flexDirection: "row", marginLeft: 25, marginTop: 20 }}>
                 <AntDesign name="arrowdown" size={23} color="red" style={{ marginRight: 15, marginTop: 10 }} />
                 <Text style={{ marginRight: 50 }}>Withdrawal</Text>
                 <Text style={{ marginLeft: 70, fontSize: 20 }}>GHC25</Text>
@@ -71,7 +89,7 @@ export default function AccountPage({ navigation }) {
                 <Text style={{ marginLeft: 30, fontSize: 20 }}>GHC25</Text>
             </View>
             <Text style={{ marginLeft: 75 }}>Yesterday, 1:45am</Text>
-            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10, marginLeft: 20 }}></Text>
+            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10, marginLeft: 20 }}></Text> */}
 
             </ScrollView>
         </View >
@@ -84,3 +102,13 @@ const styles = StyleSheet.create({
         // alignItems: "center",
     },
 })
+
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+}
+
+
+export default connect(mapStateToProps)(AccountPage)

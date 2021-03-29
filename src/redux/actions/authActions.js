@@ -15,7 +15,8 @@ export function createEmailAccount(email, password, cb) {
                phone: '',
                tasksCreated: [],
                tasksDone: [],
-               account: 0 
+               account: 0.00,
+               accountHistory: [] 
             })
 
             const profile = await db.collection('profiles').doc(user.user.uid).get()
@@ -36,7 +37,9 @@ export function login(email, password, cb) {
     return async (dispatch) => {
         try {
             const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-            dispatch(dispatcher("log_in", user))
+            
+            const profile = await db.collection('profiles').doc(user.user.uid).get()
+            dispatch(dispatcher("log_in", {...profile.data(), id: profile.id }))
             cb()
         }catch (e) {
             showMessage({
@@ -54,6 +57,21 @@ export function logout() {
     }
 }
 
+
+export function getCurrentUser() {
+    const user = firebase.auth().currentUser
+    
+    return async (dispatch) => {
+       db.collection('profile').doc(user.user.uid).onSnapshot(snapshot => {
+            const user = {...snapshot.data(), id: snapshot.id}
+            dispatch(dispatcher("log_in", user))
+       },
+         (err) => {
+
+         }
+       )
+    }
+}
 
 
 export function dispatcher(type, payload) {
