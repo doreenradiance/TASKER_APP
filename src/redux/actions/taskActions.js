@@ -45,3 +45,22 @@ export const getAllTasks = () => {
         )
     }
 }
+
+
+export const applyForTask = (id, user) => {
+    return async (dispatch) => {
+        db.collection('tasks').doc(id).update({
+            applications: firebase.firestore.FieldValue.arrayUnion(user) 
+        }).then(doc => {
+            showMessage({
+                message: "Applied Successfully",
+                type: "success"
+            })
+        }).catch(e => {
+            showMessage({
+                message: e.message,
+                type: "danger"
+            })
+        })
+    }
+}
