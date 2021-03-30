@@ -13,7 +13,8 @@ import AccountPage from "./src/screens/AccountPage";
 import ActivityPage from "./src/screens/ActivityPage";
 import WithdrawalPage from "./src/screens/WithdrawalPage";
 import CreateTaskPage from './src/screens/CreateTaskPage';
-import ProfileEditPage from "./src/screens/ProfileEditPage"
+import ProfileEditPage from "./src/screens/ProfileEditPage";
+import TransferPage from "./src/screens/TransferPage";
 import store from './src/redux/store';
 import FlashMessage from "react-native-flash-message";
 
@@ -94,6 +95,13 @@ export default function App() {
               header: () => null
             }}
             name="ProfileEdit" component={ProfileEditPage}
+          />
+
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="Transfer" component={TransferPage}
           />
         </Stack.Navigator>
       </NavigationContainer>
