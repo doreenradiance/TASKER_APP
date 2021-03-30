@@ -11,7 +11,7 @@ export default function ProfilePage({ navigation }) {
                 }}>
                     <AntDesign name="back" size={24} color="black" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={styles.profile}>PROFILE</Text>
+                <Text style={styles.profile}>ACCOUNT</Text>
             </View>
 
 
