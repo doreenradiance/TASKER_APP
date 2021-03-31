@@ -1,17 +1,34 @@
 import React from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vector-icons';
+import {connect} from "react-redux"
+import { payment } from '../redux/actions/accountActions';
 
-export default function TaskDetail({navigation, route}) {
-    
-    const {title, location, description, date, amount} = route.params.task || {}
+
+function TaskDetail({navigation, appState, payment, route}) {
+    const {user, tasks} = appState
+    const taskId = route.params.task
+    const task = tasks.find(task => task.id === taskId)
+    const {title, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = task || {}
+    const from = route?.params?.from
+    console.log("debug => ", date , tasks)
     const time = date.toDate().toString()
+
+    const displayText = !isAssigned? "Not Assigned" : isCompleted? "Completed" : createdBy === user.id? "Make Payment" : "Pending"
+
+    
+
+    const makePayment = () => {
+        payment(amount, assignedTo, taskId)
+    }
+
+
 
     return (
         <View style={styles.container}>
             <View>
                 <TouchableOpacity onPress={()=>{
-                    navigation.navigate("Tasks")
+                    navigation.goBack()
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
@@ -45,29 +62,48 @@ export default function TaskDetail({navigation, route}) {
                 <Text>{`GHC ${amount}`}</Text>
             </View>
 
-            <View style={{ flexDirection: "row", marginTop: 40 }}>
-                <TouchableOpacity>
-                    <View style={{
-                        backgroundColor: "red", width: 130, height: 45,
-                        marginTop: 40,
-                        marginLeft: 30,
-                        borderRadius: 5
-                    }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Report</Text>
-                    </View>
-                </TouchableOpacity>
+            {
+                !(!!from)? (
+                    <View style={{ flexDirection: "row", marginTop: 40 }}>
+                        <TouchableOpacity>
+                            <View style={{
+                                backgroundColor: "red", width: 130, height: 45,
+                                marginTop: 40,
+                                marginLeft: 30,
+                                borderRadius: 5
+                            }}>
+                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Report</Text>
+                            </View>
+                        </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <View style={{
-                        backgroundColor: "#429ef5", width: 130, height: 45,
-                        marginTop: 40,
-                        marginLeft: 30,
-                        borderRadius: 5
-                    }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Apply</Text>
+                        <TouchableOpacity>
+                            <View style={{
+                                backgroundColor: "#429ef5", width: 130, height: 45,
+                                marginTop: 40,
+                                marginLeft: 30,
+                                borderRadius: 5
+                            }}>
+                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Apply</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
-                </TouchableOpacity>
-            </View>
+                ) : (
+                    <TouchableOpacity onPress={() => {
+                        if(!isCompleted && (createdBy === user.id) && isAssigned) {
+                            makePayment()
+                        }
+                    }} >
+                        <View style={{
+                            backgroundColor: "#429ef5", width: 130, height: 45,
+                            marginTop: 40,
+                            marginLeft: 30,
+                            borderRadius: 5
+                        }}>
+                            <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>{displayText}</Text>
+                        </View>
+                    </TouchableOpacity> 
+                )
+            }
         </View>
     )
 }
@@ -89,3 +125,12 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
 })
+
+const mapStateToProps =(state) => {
+    return {
+        appState: state
+    }
+}
+
+
+export default connect(mapStateToProps, {payment})(TaskDetail)
