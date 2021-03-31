@@ -58,11 +58,31 @@ export function logout() {
 }
 
 
+export function editProfile(profile, userId, cb) {
+    console.log("user id =>", userId)
+    return async (dispatch) => {
+        db.collection('profiles').doc(userId).update(profile).then(() => {
+            cb()
+            showMessage({
+                message: "Profile Updated",
+                type: "success"
+            })
+        }).catch(e => {
+            console.log(e)
+            showMessage({
+                message: e.message || "Profile Update Failed",
+                type: "danger"
+            })
+        })
+    }
+}
+
+
 export function getCurrentUser() {
     const user = firebase.auth().currentUser
     
     return async (dispatch) => {
-       db.collection('profile').doc(user.user.uid).onSnapshot(snapshot => {
+       db.collection('profiles').doc(user.user.uid).onSnapshot(snapshot => {
             const user = {...snapshot.data(), id: snapshot.id}
             dispatch(dispatcher("log_in", user))
        },

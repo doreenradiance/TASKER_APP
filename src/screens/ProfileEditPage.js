@@ -1,8 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import {connect} from 'react-redux'
+import { editProfile } from '../redux/actions/authActions';
 
-export default function ProfileEditPage({ navigation }) {
+
+function ProfileEditPage({ navigation, appState, editProfile }) {
+    const {user} = appState
+    const [type, setType] = useState('view')
+
+    const [name, setName] = useState(user.name || "")
+    const [email, setEmail] = useState(user.email || "")
+    const [address, setAddress] = useState(user.address || "")
+    const [phone, setPhone] = useState(user.phone || "")
+    const [skills, setSkills] = useState(user.skills || "")
+
+    const saveProfile = () => {
+        const profile = {
+            "name":name,
+            "email":email,
+            "address":address,
+            "phone": phone,
+            "skills":skills
+        }
+
+        editProfile(profile, user.id, () => {
+            setType('view')
+        })
+        
+    }
+
+
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -11,65 +40,121 @@ export default function ProfileEditPage({ navigation }) {
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>PROFILE</Text>
+                <Text style={{ color: "#429ef5", marginLeft: 90, marginVertical: 30, fontWeight: "bold", fontSize: 25 }}>PROFILE</Text>
             </View>
-            <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 300, marginTop: 20 }}></Text>
+
 
             <View>
-                    <Text>Name</Text>
-                    <TextInput
-                        placeholderTextColor="#aaaaaa"
-                        placeholder="Consumer name"
-                    />
-                </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
+                <Text>Name</Text>
+                {
+                    type === "edit"? (
+                        <TextInput
+                            placeholderTextColor="#aaaaaa"
+                            placeholder="Consumer name"
+                            value={name}
+                            onChangeText={name => setName(name)}
+                        />
+                    ) : (
+                        <Text>{name}</Text>
+                    )
+                }
+                
+                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270,marginBottom: 30 }}></Text>
+            </View>
 
-                <View>
-                    <Text>Email</Text>
-                    <TextInput
-                        placeholderTextColor="#aaaaaa"
-                        placeholder="Consumer email"
-                    />
-                </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 
-                <View>
-                    <Text>Address</Text>
-                    <TextInput
-                        placeholderTextColor="#aaaaaa"
-                        placeholder="#19 Street, NewYork City"
-                    />
-                </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
+            <View>
+                <Text>Email</Text>
+                {
+                    type === "edit"? (
+                        <TextInput
+                            placeholderTextColor="#aaaaaa"
+                            placeholder="Consumer email"
+                            value={email}
+                            onChangeText={(email) => setEmail(email)}
+                        />
+                    ): (
+                        <Text>{email}</Text>
+                    )
+                }
+                
+                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginBottom: 30}}></Text>
+            </View>
+            
 
-                <View>
-                    <Text>Phone</Text>
-                    <TextInput
-                        placeholderTextColor="#aaaaaa"
-                        placeholder="+133 547 594 1850"
-                    />
-                </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
+            <View>
+                <Text>Address</Text>
+                {
+                    type === "edit"? (
+                        <TextInput
+                            placeholderTextColor="#aaaaaa"
+                            placeholder="#19 Street, NewYork City"
+                            value={address}
+                            onChangeText={(address) => setAddress(address)}
+                        />
+                    ): (
+                        <Text>{address}</Text>
+                    )
+                }
+                
+                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginBottom: 30 }}></Text>
+            </View>
+            
 
-                <View>
-                    <Text>Skills</Text>
-                    <TextInput
-                        placeholderTextColor="#aaaaaa"
-                        placeholder="Skill1, Skill2, Still3,..."
-                    />
-                </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
+            <View>
+                <Text>Phone</Text>
+                {
+                    type === "edit"? (
+                        <TextInput
+                            placeholderTextColor="#aaaaaa"
+                            placeholder="+133 547 594 1850"
+                            value={phone}
+                            onChangeText={phone => setPhone(phone)}
+                        />
+                    ): (
+                        <Text>{phone}</Text>
+                    )
+                }
+                
+                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginBottom: 30 }}></Text>
+            </View>
+            
 
-                <TouchableOpacity>
-                    <View style={{
-                        backgroundColor: "#429ef5", width: 200, height: 45,
-                        marginTop: 40,
-                        marginLeft: 30,
-                        borderRadius: 5
-                    }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Save </Text>
-                    </View>
-                </TouchableOpacity>
+            <View>
+                <Text>Skills</Text>
+                {
+                    type === "edit"? (
+                        <TextInput
+                            placeholderTextColor="#aaaaaa"
+                            placeholder="Skill1, Skill2, Still3,..."
+                            value={skills}
+                            onChangeText={skills => setSkills(skills)}
+                        />
+                    ): (
+                        <Text>{skills}</Text>
+                    )
+                }
+          
+                <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270,  }}></Text>
+            </View>
+            
+
+            <TouchableOpacity onPress={() => {
+                type === "view"? (
+                    setType('edit')
+                ): (
+                    saveProfile()
+                )
+            }}>
+                <View style={{
+                    backgroundColor: "#429ef5", width: 200, height: 45,
+                    marginTop: 40,
+                    marginLeft: 30,
+                    borderRadius: 5
+                }}>
+                    <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {type==="edit"? 'Save' : 'Edit' }</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -78,5 +163,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         // alignItems: "center",
+        marginLeft: 20
     },
 })
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+}
+
+
+export default connect(mapStateToProps, {editProfile})(ProfileEditPage)

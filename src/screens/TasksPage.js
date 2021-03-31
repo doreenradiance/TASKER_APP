@@ -18,14 +18,19 @@ function TasksPage({navigation, getAllTasks, appState }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => {
+                {/* <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')
                 }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginRight: 20 }} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <Text style={{ color: "#429ef5", fontSize: 25, marginRight: 110 }}>Tasks</Text>
                 <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
+
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Profile')
+                }}>
                 <AntDesign name="ellipsis1" size={30} color="#429ef5" style={{ marginTop: 5 }} />
+                </TouchableOpacity>
             </View>
             <Text style={styles.emptyText}></Text>
 
