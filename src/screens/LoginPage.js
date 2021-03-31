@@ -38,6 +38,7 @@ function LoginPage({navigation, login}) {
                         onChangeText={(email) => setEmail(email)}
                     />
                 </View>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
 
                 <View style={styles.password}>
                     <Text>Password</Text>
@@ -45,9 +46,11 @@ function LoginPage({navigation, login}) {
                         placeholderTextColor="#aaaaaa"
                         placeholder="Password"
                         value={password}
+                        secureTextEntry={true}
                         onChangeText={(password) => setPassword(password)}
                     />
                 </View>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
             </View>
 
             <TouchableOpacity 

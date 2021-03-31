@@ -20,7 +20,7 @@ export default function WithdrawalPage({navigation}) {
             <View style={{ flexDirection: "row", marginLeft: 40, marginTop: 40 }}>
                 <Text style={{ marginRight: 70, fontSize: 20 }}>Amount GHC</Text>
                 <View style={{ borderWidth: 1.5, width: 80, height: 30, borderRadius: 5, marginTop: 5 }}>
-                    <Text style={{ textAlign: "center", marginTop: 5 }}>400.00</Text>
+                    <TextInput style={{ textAlign: "center", marginTop: 5 }}>400.00</TextInput>
                 </View>
             </View>
 

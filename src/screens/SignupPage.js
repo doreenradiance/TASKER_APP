@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, TextInput, View,ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import {connect} from 'react-redux'
 import { dispatcher, createEmailAccount } from '../redux/actions/authActions';
@@ -17,7 +17,8 @@ function StartupPage({ navigation, createEmailAccount }) {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView >
+            <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate("Startup")
@@ -37,6 +38,7 @@ function StartupPage({ navigation, createEmailAccount }) {
                         onChangeText={email => setEmail(email)}
                     />
                 </View>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
 
                 <View style={styles.password}>
                     <Text>Password</Text>
@@ -48,6 +50,7 @@ function StartupPage({ navigation, createEmailAccount }) {
                         onChangeText={password => setPassword(password)}
                     />
                 </View>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
 
                 <View style={styles.confirmPassword}>
                     <Text>Confirm Password</Text>
@@ -56,7 +59,9 @@ function StartupPage({ navigation, createEmailAccount }) {
                         placeholder="Confirm Password"
                         secureTextEntry={true}
                     />
+                    
                 </View>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
             </View>
 
             <TouchableOpacity
@@ -74,7 +79,8 @@ function StartupPage({ navigation, createEmailAccount }) {
                 >Login</Text>
 
             </View>
-        </View>
+            </View>
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
