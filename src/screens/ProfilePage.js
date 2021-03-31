@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Touchable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function ProfilePage({ navigation }) {
@@ -11,13 +11,16 @@ export default function ProfilePage({ navigation }) {
                 }}>
                     <AntDesign name="back" size={24} color="black" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={styles.profile}>PROFILE</Text>
+                <Text style={styles.profile}>ACCOUNT</Text>
             </View>
 
-
+            <TouchableOpacity onPress={() => {
+                navigation.navigate("ProfileEdit")
+            }}>
             <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
             <Text style={styles.name}>Hanson McQueen</Text>
             <Text style={styles.location}>Los Angeles,City</Text>
+            </TouchableOpacity>
 
             <View style={styles.info}>
                 <TouchableOpacity onPress={() => {

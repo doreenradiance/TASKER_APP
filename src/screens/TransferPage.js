@@ -1,34 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AntDesign, } from '@expo/vector-icons';
-import {connect} from 'react-redux'
-import { numberWithCommas } from '../utils';
-
-function WithdrawalPage({navigation}) {
-    const {user} = appState
-    const {account} = user
-    const balance = numberWithCommas(account)
+import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 
-
+export default function TransferPage({navigation}) {
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row", marginTop: 70 }}>
-                <TouchableOpacity onPress={()=>{
-                    navigation.navigate('Account')
+            <View style={styles.header}>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate("TasksPage")
                 }}>
-                    <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 20 }} />
+                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>Cash Withdrawal</Text>
+                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>PROFILE</Text>
             </View>
 
-
-            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
+            <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 300, marginTop: 20 }}></Text>
 
             <View style={{ flexDirection: "row", marginLeft: 40, marginTop: 40 }}>
                 <Text style={{ marginRight: 70, fontSize: 20 }}>Amount GHC</Text>
                 <View style={{ borderWidth: 1.5, width: 80, height: 30, borderRadius: 5, marginTop: 5 }}>
-                    <TextInput style={{ textAlign: "center", marginTop: 5 }}>400.00</TextInput>
+                    <Text style={{ textAlign: "center", marginTop: 5 }}>400.00</Text>
                 </View>
             </View>
 
@@ -50,7 +42,7 @@ function WithdrawalPage({navigation}) {
 
             <TouchableOpacity>
                 <View style={{ alignSelf: "center", backgroundColor: "green", width: 150, height: 45, marginTop: 70, borderRadius: 10 }}>
-                    <Text style={{ textAlign: "center", color: "white", marginTop: 10, }}>Confirm</Text>
+                    <Text style={{ textAlign: "center", color: "white", marginTop: 10, }}>Send</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -63,13 +55,3 @@ const styles = StyleSheet.create({
         // alignItems: "center",
     },
 })
-
-
-const mapStateToProps = (state) => {
-    return {
-        appState: state
-    }
-}
-
-
-export default connect(mapStateToProps)(WithdrawalPage)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import StartupPage from './src/screens/StartupPage';
 import LoginPage from './src/screens/LoginPage';
@@ -12,6 +12,9 @@ import TaskDetail from "./src/screens/TaskDetail";
 import AccountPage from "./src/screens/AccountPage";
 import ActivityPage from "./src/screens/ActivityPage";
 import WithdrawalPage from "./src/screens/WithdrawalPage";
+import CreateTaskPage from './src/screens/CreateTaskPage';
+import ProfileEditPage from "./src/screens/ProfileEditPage";
+import TransferPage from "./src/screens/TransferPage";
 import store from './src/redux/store';
 import FlashMessage from "react-native-flash-message";
 
@@ -29,57 +32,77 @@ export default function App() {
             options={{
               header: () => null
             }}
-            name="Startup" component={StartupPage} 
-          />
-          <Stack.Screen 
-            options={{
-              header: () => null
-            }}
-            name="Login" component={LoginPage} 
+            name="Startup" component={StartupPage}
           />
           <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Signup" component={SignupPage} 
+            name="Login" component={LoginPage}
           />
-          <Stack.Screen 
+          <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Profile" component={ProfilePage} 
+            name="Signup" component={SignupPage}
           />
-          <Stack.Screen 
+          <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Tasks" component={TasksPage} 
+            name="Profile" component={ProfilePage}
           />
-          <Stack.Screen 
+          <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Detail" component={TaskDetail} 
+            name="Tasks" component={TasksPage}
           />
-          <Stack.Screen 
+          <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Account" component={AccountPage} 
+            name="Detail" component={TaskDetail}
           />
-          <Stack.Screen 
+          <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Activity" component={ActivityPage} 
+            name="Account" component={AccountPage}
           />
-          <Stack.Screen 
+          <Stack.Screen
             options={{
               header: () => null
             }}
-            name="Withdraw" component={WithdrawalPage} 
+            name="Activity" component={ActivityPage}
+          />
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="Withdraw" component={WithdrawalPage}
           />
 
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="CreateTask" component={CreateTaskPage}
+          />
+
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="ProfileEdit" component={ProfileEditPage}
+          />
+
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="Transfer" component={TransferPage}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       <FlashMessage position='top' duration={3000} />
