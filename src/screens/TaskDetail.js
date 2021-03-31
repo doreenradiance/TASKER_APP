@@ -9,9 +9,8 @@ function TaskDetail({navigation, appState, payment, route}) {
     const {user, tasks} = appState
     const taskId = route.params.task
     const task = tasks.find(task => task.id === taskId)
-    const {title, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = task || {}
+    const {title, phone, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = task || {}
     const from = route?.params?.from
-    console.log("debug => ", date , tasks)
     const time = date.toDate().toString()
 
     const displayText = !isAssigned? "Not Assigned" : isCompleted? "Completed" : createdBy === user.id? "Make Payment" : "Pending"
