@@ -4,13 +4,13 @@ import { StyleSheet, Text, ScrollView, TouchableOpacity, View, Image } from 'rea
 
 
 function TaskItem (props) {
-    const {title, amount, location } = props.data
+    const {title, amount, location, id } = props.data
     console.log(props.data)
     return (
         <>
             <View style={styles.tasks} >
                 <TouchableOpacity onPress={() => {
-                    props.navigation.navigate('Detail', {task: props.data})
+                    props.navigation.navigate('Detail', {task: id})
                 }}>
                     <View style={{ flexDirection: "row", marginRight: 50 }}>
                         <Text style={{ marginRight: 120 }}>{title || 'Fix my plumbing'}</Text>
