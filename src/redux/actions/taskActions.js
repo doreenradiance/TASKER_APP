@@ -54,7 +54,7 @@ export const allTaskActivities = (id) => {
     return async (dispatch) => {
         try {
             const createdTasks = await db.collection('tasks').where("createdBy", "==", id ).get()
-            const assignedTasks = await db.collection('tasks').where("assigned", "==", id ).get()
+            const assignedTasks = await db.collection('tasks').where("assignedTo", "==", id ).get()
             const newList =  []
             
             createdTasks.forEach(doc => newList.push(doc))
