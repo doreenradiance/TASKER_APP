@@ -112,21 +112,21 @@ export const assignTask = (taskId, userId) => {
 
 
 
-export const markAsComplete = (taskId, userId, amt) => {
-    return async (dispatch) => {
-        db.collection('tasks').doc(taskId).update({
-            isComplete: userId 
-        }).then(doc => {
-            payment(userId, amt)
-            // showMessage({
-            //     message: "Task Assigned",
-            //     type: "success"
-            // })
-        }).catch(e => {
-            showMessage({
-                message: e.message,
-                type: "danger"
-            })
-        })
-    }
-}
+// export const markAsComplete = (taskId, userId, amt) => {
+//     return async (dispatch) => {
+//         db.collection('tasks').doc(taskId).update({
+//             isComplete: userId 
+//         }).then(doc => {
+//             payment(userId, amt)
+//             // showMessage({
+//             //     message: "Task Assigned",
+//             //     type: "success"
+//             // })
+//         }).catch(e => {
+//             showMessage({
+//                 message: e.message,
+//                 type: "danger"
+//             })
+//         })
+//     }
+// }
