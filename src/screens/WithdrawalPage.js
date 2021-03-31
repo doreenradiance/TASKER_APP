@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View,TextInput } from 'react-native';
 import { AntDesign, } from '@expo/vector-icons';
 import {connect} from 'react-redux'
 import { numberWithCommas } from '../utils';
 
-function WithdrawalPage({navigation}) {
+function WithdrawalPage({navigation, appState}) {
     const {user} = appState
     const {account} = user
     const balance = numberWithCommas(account)
