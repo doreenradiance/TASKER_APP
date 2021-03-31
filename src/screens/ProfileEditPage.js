@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-nativ
 import { AntDesign } from '@expo/vector-icons';
 import {connect} from 'react-redux'
 import { editProfile } from '../redux/actions/authActions';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 function ProfileEditPage({ navigation, appState, editProfile }) {
@@ -43,7 +44,7 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
                 <Text style={{ color: "#429ef5", marginLeft: 90, marginVertical: 30, fontWeight: "bold", fontSize: 25 }}>PROFILE</Text>
             </View>
 
-
+            <ScrollView>
             <View>
                 <Text>Name</Text>
                 {
@@ -138,6 +139,7 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270,  }}></Text>
             </View>
             
+            
 
             <TouchableOpacity onPress={() => {
                 type === "view"? (
@@ -155,6 +157,7 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
                     <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {type==="edit"? 'Save' : 'Edit' }</Text>
                 </View>
             </TouchableOpacity>
+            </ScrollView>
         </View>
     )
 }
