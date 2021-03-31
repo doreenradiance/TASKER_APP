@@ -1,8 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import {connect} from 'react-redux'
+import { allTaskActivities } from '../redux/actions/taskActions';
+import { ScrollView } from 'react-native-gesture-handler';
+import ActivityItem from '../components/ActivityItem';
 
-export default function ActivityPage({navigation}) {
+function ActivityPage({navigation, allTaskActivities, appState}) {
+    const {taskActivities, user} = appState
+
+    useEffect(() => {
+        allTaskActivities(user.id)
+    }, [])
+
+
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
@@ -16,7 +27,19 @@ export default function ActivityPage({navigation}) {
 
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
 
-            <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 10 }}>
+            <ScrollView>
+                {
+                    taskActivities[0]? tasks.map(task => {
+                        return <ActivityItem key={task.id} data={task} navigation={navigation} />
+                    })
+                    : 
+                    <View>
+                        <Text>There are no tasks Available</Text>
+                    </View>
+                }
+            </ScrollView>
+
+            {/* <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 10 }}>
                 <MaterialCommunityIcons name="cancel" size={24} color="black" size={25} style={{ marginRight: 10, marginTop: 10 }} />
                 <Text style={{ marginRight: 35 }}>Clean Washroom</Text>
                 <Text style={{ marginLeft: 30, fontSize: 20 }}>Madina</Text>
@@ -61,7 +84,7 @@ export default function ActivityPage({navigation}) {
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 300, marginTop: 15, marginLeft: 25 }}></Text>
 
 
-            <Text style={{ color: "#429ef5", textAlign: "center", marginTop: 20 }}>See All</Text>
+            <Text style={{ color: "#429ef5", textAlign: "center", marginTop: 20 }}>See All</Text> */}
         </View>
     )
 }
@@ -72,3 +95,13 @@ const styles = StyleSheet.create({
         // alignItems: "center",
     },
 })
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+}
+
+
+
+export default connect(mapStateToProps, {allTaskActivities})(ActivityPage)

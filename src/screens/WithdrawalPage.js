@@ -1,8 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, } from '@expo/vector-icons';
+import {connect} from 'react-redux'
+import { numberWithCommas } from '../utils';
 
-export default function WithdrawalPage({navigation}) {
+function WithdrawalPage({navigation}) {
+    const {user} = appState
+    const {account} = user
+    const balance = numberWithCommas(account)
+
+
+
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 70 }}>
@@ -55,3 +63,13 @@ const styles = StyleSheet.create({
         // alignItems: "center",
     },
 })
+
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+}
+
+
+export default connect(mapStateToProps)(WithdrawalPage)

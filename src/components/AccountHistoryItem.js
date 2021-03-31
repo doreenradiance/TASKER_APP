@@ -5,11 +5,12 @@ import { numberWithCommas } from '../utils';
 
 export default function AccountHistoryItem(props) {
     const {type, amount, date} = props.data
-    console.log("time ->",date)
     const amt = numberWithCommas(amount)
     const icon = ["deposit", "payment"].includes(type)? "arrowup" : "arrowdown"
     const color = ["deposit", "payment"].includes(type)? "green" : "red"
     const time = new Date(date.seconds * 1000).toLocaleString()
+
+
     return (
         <>
             <View style={{ flexDirection: "row", marginLeft: 25, marginTop: 20 }}>

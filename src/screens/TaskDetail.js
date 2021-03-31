@@ -4,8 +4,8 @@ import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vecto
 
 export default function TaskDetail({navigation, route}) {
     
-    const {title, location, description, time, amount} = route.params.task || {}
-    const date = time.toDate().toString()
+    const {title, location, description, date, amount} = route.params.task || {}
+    const time = date.toDate().toString()
 
     return (
         <View style={styles.container}>
@@ -37,7 +37,7 @@ export default function TaskDetail({navigation, route}) {
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 50 }}>
                 <Ionicons name="alarm" size={25} color="#429ef5" style={{ marginRight: 35 }} />
-                <Text>{date || 'Today, 8:25am'}</Text>
+                <Text>{time || 'Today, 8:25am'}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>

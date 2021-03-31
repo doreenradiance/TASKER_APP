@@ -10,7 +10,6 @@ import TaskItem from '../components/TaskItem';
 
 function TasksPage({navigation, getAllTasks, appState }) {
     const {tasks, user} = appState
-    console.log("get user ->", user)
 
     useEffect(() => {
         getAllTasks()

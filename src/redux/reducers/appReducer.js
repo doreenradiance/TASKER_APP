@@ -1,7 +1,8 @@
 const initialState = {
     loggedIn: false,
     user: null,
-    tasks: []
+    tasks: [],
+    taskActivities: []
 }
 
 
@@ -27,6 +28,12 @@ const appReducer = (state=initialState, actions) => {
             return {
                 ...state,
                 tasks: payload
+            }
+
+        case 'task_activity':
+            return {
+                ...state,
+                taskActivities: payload
             }
 
         default:
