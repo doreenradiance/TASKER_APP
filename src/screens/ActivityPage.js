@@ -33,7 +33,7 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
                         return <ActivityItem key={task.id} data={task} navigation={navigation} />
                     })
                     : 
-                    <View>
+                    <View style={{marginLeft:10}}>
                         <Text>There are no tasks Available</Text>
                     </View>
                 }

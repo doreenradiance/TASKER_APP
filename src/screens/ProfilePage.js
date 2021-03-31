@@ -38,7 +38,7 @@ export default function ProfilePage({ navigation }) {
                 }}>
                     <Text style={{ fontSize: 17, marginLeft: 45 }}>Account</Text>
                 </TouchableOpacity>
-                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 200 }} />
+                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 190 }} />
             </View>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 

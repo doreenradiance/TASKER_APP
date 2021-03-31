@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { dispatcher, login } from '../redux/actions/authActions';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
-function LoginPage({navigation, login}) {
+function LoginPage({ navigation, login }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,7 +20,7 @@ function LoginPage({navigation, login}) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={()=>{
+                <TouchableOpacity onPress={() => {
                     navigation.navigate("Startup")
                 }}>
                     <AntDesign name="back" size={24} color="white" style={styles.icon} />
@@ -27,7 +28,7 @@ function LoginPage({navigation, login}) {
                 <Text style={styles.login}>LOG IN</Text>
             </View>
 
-
+           
             <View style={styles.inputs}>
                 <View style={styles.email}>
                     <Text>Email</Text>
@@ -36,9 +37,9 @@ function LoginPage({navigation, login}) {
                         placeholder="Email"
                         value={email}
                         onChangeText={(email) => setEmail(email)}
-                    />
+                    /><Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 300, }}></Text>
                 </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
+
 
                 <View style={styles.password}>
                     <Text>Password</Text>
@@ -49,26 +50,29 @@ function LoginPage({navigation, login}) {
                         secureTextEntry={true}
                         onChangeText={(password) => setPassword(password)}
                     />
+                    <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 300, }}></Text>
                 </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 10 }}></Text>
-            </View>
 
-            <TouchableOpacity 
+            </View>
+            
+
+            <TouchableOpacity
                 disabled={!email || !password}
-                onPress={()=>{
+                onPress={() => {
                     onLogin()
-                }}style={styles.loginTextButton}>
+                }} style={styles.loginTextButton}>
                 <Text style={styles.loginText}>Log In</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
-                <Text 
+                <Text
                     style={{ color: "#429ef5", marginLeft: 5 }}
                     onPress={() => navigation.navigate('Signup')}
                 >Sign up</Text>
 
             </View>
+            
         </View>
     )
 }
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         // justifyContent: "space-around",
-        alignItems: "center"
+        alignItems: "center",
     },
     header: {
         flex: 0.4,
@@ -86,26 +90,29 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
     },
     icon: {
-        marginTop: 90,
+        marginTop: 65,
         marginLeft: 40
     },
     login: {
-        marginTop: 90,
+        marginTop: 60,
         color: "white",
         marginLeft: 85,
         fontWeight: "bold",
         fontSize: 25
     },
+    password: {
+        marginTop: 30,
+    },
     inputs: {
         marginTop: 70,
         alignSelf: "flex-start",
-        marginLeft: 50,
+        marginLeft: 20,
     },
     input: {
-        marginVertical: 15
+        marginVertical: 10
     },
     input2: {
-        marginVertical: 15
+        marginVertical: 10
     },
     loginTextButton: {
         backgroundColor: "#429ef5",
@@ -131,7 +138,7 @@ const mapStateToProps = (state) => {
     return {
         appState: state
     }
-} 
+}
 
 
-export default connect(mapStateToProps, {login, dispatcher} )(LoginPage)
+export default connect(mapStateToProps, { login, dispatcher })(LoginPage)

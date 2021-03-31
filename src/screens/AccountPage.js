@@ -31,11 +31,21 @@ function AccountPage({ navigation, appState }) {
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('Withdraw')
                     }}>
-                    <Text style={{ marginLeft: 20, fontSize: 15 }}>Withdraw Cash</Text>
+                    <Text style={{ marginLeft: 10, fontSize: 15 }}>Withdraw Cash</Text>
                     </TouchableOpacity>
                 <Ionicons name="chevron-forward" size={26} color="black" style={{ marginLeft: 170 }} />
                 </View>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
+
+            <View style={{ flexDirection: "row", marginTop: 20, }}>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('Deposit')
+                    }}>
+                    <Text style={{ marginLeft: 20, fontSize: 15 }}>Deposit</Text>
+                    </TouchableOpacity>
+                <Ionicons name="chevron-forward" size={26} color="black" style={{ marginLeft: 210 }} />
+                </View>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
 
             <Text style={{ marginLeft: 20, marginTop: 10, color: "#807878" }}>History</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>

@@ -8,7 +8,7 @@ export default function TransferPage({navigation}) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate("AccountPage")
+                    navigation.navigate("Account")
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>

@@ -4,7 +4,7 @@ import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vecto
 
 export default function TaskDetail({navigation, route}) {
     
-    const {title, location, description, date, amount} = route.params.task || {}
+    const {title, location, description, date, amount, phone} = route.params.task || {}
     const time = date.toDate().toString()
 
     return (
@@ -41,11 +41,16 @@ export default function TaskDetail({navigation, route}) {
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
+            <Entypo name="phone" size={24} color="#429ef5" style={{ marginRight: 35 }}/>
+            <Text>{phone|| '2333556477'}</Text>
+            </View>
+
+            <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
                 <FontAwesome5 name="sort-amount-up" size={24} color="#429ef5" style={{ marginRight: 35 }} />
                 <Text>{`GHC ${amount}`}</Text>
             </View>
 
-            <View style={{ flexDirection: "row", marginTop: 40 }}>
+            <View style={{ flexDirection: "row", marginTop: 40,alignItems:"center" }}>
                 <TouchableOpacity>
                     <View style={{
                         backgroundColor: "red", width: 130, height: 45,
