@@ -4,15 +4,16 @@ import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
 
 export default function ActivityItem(props) { 
-    const {title, amount, location, isComplete, date } = props.data
+    const {title, amount, location, isCompleted, date, id } = props.data
     // const amt = numberWithCommas(amount)
-    const icon = isComplete? "checkbox-marked-circle" : "circle-with-cross"
-    const color = isComplete? "green" : "red"
+    const icon = isCompleted? "checkbox-marked-circle" : "circle-with-cross"
+    const color = isCompleted? "green" : "red"
     const time = new Date(date.seconds * 1000).toLocaleString()
+    
 
     return (
         <TouchableOpacity onPress={() => {
-            props.navigation.navigate('Detail', {task: props.data})
+            props.navigation.navigate('Detail', {task: id, from: "activity"})
         }}>
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 20 }}>
                 <MaterialCommunityIcons name={icon} size={25} color={color} style={{ marginRight: 10, marginTop: 10 }} />

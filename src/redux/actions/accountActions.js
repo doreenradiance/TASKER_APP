@@ -17,7 +17,7 @@ export function withdraw(amt, user) {
                 message: "Withdrawal Successful",
                 type: 'success'
             })
-        }).catch(() => {
+        }).catch((e) => {
             showMessage({
                 message: 'withdrawal Failed',
                 type: 'danger'
@@ -40,7 +40,7 @@ export function deposit(amt, user) {
                 message: "deposit Successful",
                 type: 'success'
             })
-        }).catch(() => {
+        }).catch((e) => {
             showMessage({
                 message: 'deposit Failed',
                 type: 'danger'
@@ -49,22 +49,26 @@ export function deposit(amt, user) {
     }
 }
 
-export function payment(amt, user, taskId) {
+export function payment(amt, userId, taskId) {
     return async (dispatch) => {
-        db.collection('profiles').doc(user.id).update({
+        //user to pay
+        let user = await db.collection("profiles").doc(userId).get()
+        user = user.data()
+        db.collection('profiles').doc(userId).update({
             account: parseInt(user.account) + parseInt(amt),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'payment',
                 amount: amt,
-                date: firebase.firestore.FieldValue.serverTimestamp()
+                date: Date.now()
             })
         }).then(async () => {
-            await db.collection('tasks').doc(taskId).update({ isComplete: userId })
+            await db.collection('tasks').doc(taskId).update({ isCompleted: true })
             showMessage({
                 message: "payment sent",
                 type: 'success'
             })
-        }).catch(() => {
+        }).catch((e) => {
+            console.log(e)
             showMessage({
                 message: 'payment failed',
                 type: 'danger'

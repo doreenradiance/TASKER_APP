@@ -29,7 +29,7 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
 
             <ScrollView>
                 {
-                    taskActivities[0]? tasks.map(task => {
+                    taskActivities[0]? taskActivities.map(task => {
                         return <ActivityItem key={task.id} data={task} navigation={navigation} />
                     })
                     : 
