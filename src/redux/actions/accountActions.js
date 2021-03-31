@@ -58,7 +58,7 @@ export function payment(amt, user, taskId) {
                 amount: amt,
                 date: firebase.firestore.FieldValue.serverTimestamp()
             })
-        }).then(() => {
+        }).then(async () => {
             await db.collection('tasks').doc(taskId).update({ isComplete: userId })
             showMessage({
                 message: "payment sent",
