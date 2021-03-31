@@ -3,9 +3,9 @@ import { showMessage } from 'react-native-flash-message'
 
 const db = firebase.firestore()
 
-export function withdraw(amt, id) {
+export function withdraw(amt, user) {
     return async (dispatch) => {
-        db.collection('profiles').doc(id).update({
+        db.collection('profiles').doc(user.id).update({
             account: parseInt(user.account) - parseInt(amt),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'withdrawal',
@@ -26,9 +26,9 @@ export function withdraw(amt, id) {
     }
 }
 
-export function deposit(amt, id) {
+export function deposit(amt, user) {
     return async (dispatch) => {
-        db.collection('profiles').doc(id).update({
+        db.collection('profiles').doc(user.id).update({
             account: parseInt(user.account) + parseInt(amt),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'deposit',
@@ -49,9 +49,9 @@ export function deposit(amt, id) {
     }
 }
 
-export function payment(amt, id) {
+export function payment(amt, user, taskId) {
     return async (dispatch) => {
-        db.collection('profiles').doc(id).update({
+        db.collection('profiles').doc(user.id).update({
             account: parseInt(user.account) + parseInt(amt),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'payment',
@@ -59,6 +59,7 @@ export function payment(amt, id) {
                 date: firebase.firestore.FieldValue.serverTimestamp()
             })
         }).then(() => {
+            await db.collection('tasks').doc(taskId).update({ isComplete: userId })
             showMessage({
                 message: "payment sent",
                 type: 'success'

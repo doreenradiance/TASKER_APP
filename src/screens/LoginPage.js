@@ -11,7 +11,7 @@ function LoginPage({navigation, login}) {
     const [password, setPassword] = useState('')
 
     const onLogin = () => {
-        login(email, password, () => {
+        login(email.trim(), password, () => {
             navigation.navigate("Tasks")
         })
     }
