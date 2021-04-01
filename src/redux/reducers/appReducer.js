@@ -24,6 +24,12 @@ const appReducer = (state=initialState, actions) => {
                 user: null
             }
 
+        case 'update_user':
+            return {
+                ...state,
+                user: payload
+            }
+
         case 'all_tasks':
             return {
                 ...state,

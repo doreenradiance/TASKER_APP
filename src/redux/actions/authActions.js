@@ -84,7 +84,7 @@ export function getCurrentUser() {
     return async (dispatch) => {
        db.collection('profiles').doc(user.user.uid).onSnapshot(snapshot => {
             const user = {...snapshot.data(), id: snapshot.id}
-            dispatch(dispatcher("log_in", user))
+            dispatch(dispatcher("update_user", user))
        },
          (err) => {
 

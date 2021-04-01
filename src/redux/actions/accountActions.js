@@ -3,14 +3,14 @@ import { showMessage } from 'react-native-flash-message'
 
 const db = firebase.firestore()
 
-export function withdraw(amt, user) {
+export function withdraw(amt, userId) {
     return async (dispatch) => {
-        db.collection('profiles').doc(user.id).update({
-            account: parseInt(user.account) - parseInt(amt),
+        db.collection('profiles').doc(userId).update({
+            account: firebase.firestore.FieldValue.increment(-parseInt(amt)),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'withdrawal',
                 amount: amt,
-                date: firebase.firestore.FieldValue.serverTimestamp()
+                date: Date.now()
             })
         }).then(() => {
             showMessage({
@@ -26,14 +26,14 @@ export function withdraw(amt, user) {
     }
 }
 
-export function deposit(amt, user) {
+export function deposit(amt, userId) {
     return async (dispatch) => {
-        db.collection('profiles').doc(user.id).update({
-            account: parseInt(user.account) + parseInt(amt),
+        db.collection('profiles').doc(userId).update({
+            account: firebase.firestore.FieldValue.increment(parseInt(amt)),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'deposit',
                 amount: amt,
-                date: firebase.firestore.FieldValue.serverTimestamp()
+                date: Date.now()
             })
         }).then(() => {
             showMessage({
