@@ -94,6 +94,15 @@ export function getCurrentUser() {
 }
 
 
+export async function getUser(userId) {
+    const  user = await db.collection('profiles').doc(userId).get()
+    return {
+        ...user.data(),
+        id: user.id 
+    } 
+}
+
+
 export function dispatcher(type, payload) {
     return payload? {
         type,

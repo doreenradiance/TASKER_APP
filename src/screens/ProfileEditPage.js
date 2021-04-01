@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { connect } from 'react-redux'
-import { editProfile } from '../redux/actions/authActions';
+import { editProfile, getUser } from '../redux/actions/authActions';
 import { ScrollView } from 'react-native-gesture-handler';
 
 
-function ProfileEditPage({ navigation, appState, editProfile }) {
-    const { user } = appState
-    const [type, setType] = useState('view')
+function ProfileEditPage({ navigation, appState, editProfile, route }) {
+    const { user:currentUser } = appState
 
+
+    const [type, setType] = useState('view')
+    const [user, setUser] = useState({})
     const [name, setName] = useState(user.name || "")
     const [email, setEmail] = useState(user.email || "")
     const [address, setAddress] = useState(user.address || "")
     const [phone, setPhone] = useState(user.phone || "")
     const [skills, setSkills] = useState(user.skills || "")
+
+    //check if current users profile is being displayed
+    const current = currentUser.id === user.id
 
     const saveProfile = () => {
         const profile = {
@@ -28,8 +33,20 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
         editProfile(profile, user.id, () => {
             setType('view')
         })
-
     }
+
+
+    useEffect(() => {
+        (async function() {
+            const userId = route.params.other
+            if(userId) {
+                const user = await getUser(userId)
+                setUser(user)
+            }else {
+                setUser(currentUser)
+            }          
+        })()
+    }, [])
 
 
 
@@ -37,7 +54,7 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate("Tasks")
+                    navigation.goBack()
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
@@ -140,7 +157,7 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
                 </View>
 
 
-                <View style={{ flexDirection: "row" }}>
+                {current && <View style={{ flexDirection: "row" }}>
                     <TouchableOpacity onPress={() => {
                         type === "view" ? (
                             setType('edit')
@@ -170,7 +187,7 @@ function ProfileEditPage({ navigation, appState, editProfile }) {
                             <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Cancel</Text>
                         </View>
                     </TouchableOpacity>
-                </View>
+                </View>}
             </ScrollView>
         </View>
     )

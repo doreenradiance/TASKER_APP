@@ -95,7 +95,10 @@ export const allTaskActivities = (id) => {
 export const applyForTask = (id, user) => {
     return async (dispatch) => {
         db.collection('tasks').doc(id).update({
-            applications: firebase.firestore.FieldValue.arrayUnion(user) 
+            applications: firebase.firestore.FieldValue.arrayUnion({
+                id: user.id,
+                name: user.name
+            }) 
         }).then(doc => {
             showMessage({
                 message: "Applied Successfully",
@@ -114,7 +117,8 @@ export const applyForTask = (id, user) => {
 export const assignTask = (taskId, userId) => {
     return async (dispatch) => {
         db.collection('tasks').doc(taskId).update({
-            assignedTo: userId 
+            assignedTo: userId,
+            isAssigned: true
         }).then(doc => {
             showMessage({
                 message: "Task Assigned",
