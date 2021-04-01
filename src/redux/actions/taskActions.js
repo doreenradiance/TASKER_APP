@@ -7,7 +7,14 @@ const db = firebase.firestore()
 
 export const createTask = (task={}) => {
     return async (dispatch) => {
-        db.collection("tasks").add(task)
+        db.collection("tasks").add({
+            ...task,
+            isCompleted: false,
+            assignedTo: '',
+            isAssigned: false,
+            applications: [],
+            date: firebase.firestore.FieldValue.serverTimestamp()
+        })
         .then((doc) => {
             showMessage({
                 message: "Task Created",
@@ -30,6 +37,7 @@ export const getAllTasks = () => {
         db.collection('tasks').onSnapshot((snapShot) => {
             const tasks = []
             snapShot.forEach(doc => {
+                if(doc.data().isAssigned) return 
                 const data = doc.data()
                 data.id = doc.id
                 return tasks.push(data)
