@@ -6,16 +6,16 @@ import { payment } from '../redux/actions/accountActions';
 
 
 function TaskDetail({navigation, appState, payment, route}) {
-    const {user, tasks} = appState
+    const {user, taskActivities} = appState
     const taskId = route.params.task
-    const task = tasks.find(task => task.id === taskId)
+    const task = taskActivities.find(task => task.id === taskId)
     const {title, phone, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = task || {}
     const from = route?.params?.from
     const time = date.toDate().toString()
 
+    //text to be displayed on the button below
     const displayText = !isAssigned? "Not Assigned" : isCompleted? "Completed" : createdBy === user.id? "Make Payment" : "Pending"
 
-    
 
     const makePayment = () => {
         payment(amount, assignedTo, taskId)

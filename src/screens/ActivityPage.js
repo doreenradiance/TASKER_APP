@@ -8,6 +8,7 @@ import ActivityItem from '../components/ActivityItem';
 
 function ActivityPage({navigation, allTaskActivities, appState}) {
     const {taskActivities, user} = appState
+    
 
     useEffect(() => {
         allTaskActivities(user.id)

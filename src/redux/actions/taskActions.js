@@ -4,9 +4,10 @@ import { dispatcher } from './authActions'
 import { payment } from './accountActions'
 
 const db = firebase.firestore()
-const userObj = firebase.auth().currentUser
+let userObj;
 
 export const createTask = (task={}) => {
+    userObj = firebase.auth().currentUser
     return async (dispatch) => {
         const user = await db.collection("profiles").doc(userObj.user.uid).get()
         if(user.amount < task.amount) throw Error('Not Enough Balance to Created Task');
@@ -44,6 +45,7 @@ export const getAllTasks = () => {
         db.collection('tasks').onSnapshot((snapShot) => {
             const tasks = []
             snapShot.forEach(doc => {
+                //exclude tasks that have already been assigned
                 if(doc.data().isAssigned) return 
                 const data = doc.data()
                 data.id = doc.id
@@ -65,23 +67,24 @@ export const getAllTasks = () => {
 
 
 // get all task activities
-export const allTaskActivities = (id) => {
+export const allTaskActivities = (id) => {   
     return async (dispatch) => {
         try {
-            const createdTasks = await db.collection('tasks').where("createdBy", "==", id ).get()
-            const assignedTasks = await db.collection('tasks').where("assignedTo", "==", id ).get()
             const newList =  []
-            
-            createdTasks.forEach(doc => newList.push(doc))
-            assignedTasks.forEach(doc => newList.push(doc))
+            const created = await db.collection('tasks').where("createdBy", "==", id ).get()
+            const assigned = await db.collection('tasks').where("assignedTo", "==", id ).get()
+
+            created.forEach(doc => newList.push(doc));
+            assigned.forEach(doc => newList.push(doc));
             
             const taskActivities = []
-
             newList.forEach(doc => {
                 const data = doc.data()
                 data.id = doc.id
                 return taskActivities.push(data)
             })
+
+            console.log("user obj =>", newList)
 
             dispatch(dispatcher("task_activity", taskActivities))
         
