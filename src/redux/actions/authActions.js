@@ -2,6 +2,7 @@ import firebase from '../../firebase/firebase'
 import { showMessage } from 'react-native-flash-message'
 
 const db = firebase.firestore()
+let userObj = firebase.auth().currentUser;
 
 
 export function createEmailAccount(email, password, cb) {
@@ -82,7 +83,7 @@ export function getCurrentUser() {
     const user = firebase.auth().currentUser
     
     return async (dispatch) => {
-       db.collection('profiles').doc(user.user.uid).onSnapshot(snapshot => {
+       db.collection('profiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
             const user = {...snapshot.data(), id: snapshot.id}
             dispatch(dispatcher("update_user", user))
        },

@@ -1,18 +1,28 @@
 import firebase from '../../firebase/firebase'
 import { showMessage } from 'react-native-flash-message'
+import { numberWithCommas } from '../../utils'
 
 const db = firebase.firestore()
 
 export function withdraw(amt, userId) {
     return async (dispatch) => {
+        const fees = parseInt(amt) * 0.01
         db.collection('profiles').doc(userId).update({
-            account: firebase.firestore.FieldValue.increment(-parseInt(amt)),
+            account: firebase.firestore.FieldValue.increment(-(parseInt(amt)+fees)),
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'withdrawal',
-                amount: amt,
-                date: Date.now()
+                amount: numberWithCommas(parseInt(amt) + fees),
+                date: {seconds: Date.now() / 1000}
             })
-        }).then(() => {
+        }).then(async () => {
+            await db.collection('profiles').doc('taskerapp').update({
+                account: firebase.firestore.FieldValue.increment(fees),
+                accountHistory: firebase.firestore.FieldValue.arrayUnion({
+                    type: 'fees',
+                    amount: amt,
+                    date: {seconds: Date.now() / 1000}
+                })
+            })
             showMessage({
                 message: "Withdrawal Successful",
                 type: 'success'
@@ -33,7 +43,7 @@ export function deposit(amt, userId) {
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'deposit',
                 amount: amt,
-                date: Date.now()
+                date: {seconds: Date.now() / 1000}
             })
         }).then(() => {
             showMessage({
@@ -59,7 +69,7 @@ export function payment(amt, userId, taskId) {
             accountHistory: firebase.firestore.FieldValue.arrayUnion({
                 type: 'payment',
                 amount: amt,
-                date: Date.now()
+                date: {seconds: Date.now() / 1000}
             })
         }).then(async () => {
             await db.collection('tasks').doc(taskId).update({ isCompleted: true })
