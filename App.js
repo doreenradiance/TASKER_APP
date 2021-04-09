@@ -15,6 +15,7 @@ import WithdrawalPage from "./src/screens/WithdrawalPage";
 import CreateTaskPage from './src/screens/CreateTaskPage';
 import ProfileEditPage from "./src/screens/ProfileEditPage";
 import DepositPage from "./src/screens/DepositPage";
+import ApplicantsPage from "./src/screens/ApplicantsPage";
 import store from './src/redux/store';
 import FlashMessage from "react-native-flash-message";
 
@@ -102,6 +103,13 @@ export default function App() {
               header: () => null
             }}
             name="Deposit" component={DepositPage}
+          />
+
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="Applicants" component={ApplicantsPage}
           />
         </Stack.Navigator>
       </NavigationContainer>
