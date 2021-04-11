@@ -24,7 +24,7 @@ export const createTask = (task={}) => {
             assignedTo: '',
             isAssigned: false,
             applications: [],
-            date: firebase.firestore.FieldValue.serverTimestamp()
+            // date: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then(async (doc) => {
             await db.collection('profiles').doc(userObj?.uid).update({

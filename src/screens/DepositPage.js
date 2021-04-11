@@ -38,9 +38,9 @@ function DepositPage({navigation, appState, deposit}) {
                 <View style={{ borderWidth: 1.5, width: 80, height: 30, borderRadius: 5, marginTop: 5 }}>
                     <TextInput 
                         style={{ textAlign: "center", marginTop: 5 }}
-                        valur={deposit}
+                        value={amt}
                         onChangeText={val => setAmt(val)}
-                    >400.00</TextInput>
+                    />
                 </View>
             </View>
 
