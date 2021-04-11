@@ -7,6 +7,7 @@ let userObj;
 firebase.auth().onAuthStateChanged((user) => {
     if(user) {
         userObj = user
+        console.log("current user =>", userObj)
     }
 })
 
@@ -66,7 +67,6 @@ export function logout() {
 
 
 export function editProfile(profile, userId, cb) {
-    console.log("user id =>", userId)
     return async (dispatch) => {
         db.collection('profiles').doc(userId).update(profile).then(() => {
             cb()
@@ -89,6 +89,7 @@ export function getCurrentUser() {
     
     return async (dispatch) => {
        db.collection('profiles').doc(userObj?.uid).onSnapshot(snapshot => {
+           
             const user = {...snapshot.data(), id: snapshot.id}
             dispatch(dispatcher("update_user", user))
        },

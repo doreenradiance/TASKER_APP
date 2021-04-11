@@ -10,7 +10,6 @@ function StartupPage({ navigation, createEmailAccount }) {
     const [password, setPassword] = useState('')
 
     const onSignup = () => {
-        console.log(email, password)
         createEmailAccount(email, password, () => {
             navigation.navigate("Profile")
         })

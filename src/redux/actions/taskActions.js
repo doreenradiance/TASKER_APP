@@ -90,8 +90,6 @@ export const allTaskActivities = (id) => {
                 return taskActivities.push(data)
             })
 
-            console.log("user obj =>", newList)
-
             dispatch(dispatcher("task_activity", taskActivities))
         
         }catch (e) {
