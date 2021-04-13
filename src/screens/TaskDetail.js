@@ -13,7 +13,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
     const {user, taskDetails} = appState
     const taskId = route.params.task
     // const task = taskActivities.find(task => task.id === taskId)
-    const {title, phone, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = taskDetails || {}
+    const {title, phone, location, description, date, amount, isCompleted, createdBy, isAssigned, applications, assignedTo} = taskDetails || {}
     const from = route?.params?.from
     const time = new Date(date?.seconds * 1000).toLocaleString()
 
@@ -125,7 +125,11 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                         </TouchableOpacity> 
 
                         <TouchableOpacity onPress={() => {
-                            navigation.navigate("Applicants")
+                            navigation.navigate("Applicants", {task: {
+                                title,
+                                description,
+                                applications
+                            } })
                         }} >
                             <View style={{
                                 backgroundColor: "#429ef5", width: 130, height: 45,

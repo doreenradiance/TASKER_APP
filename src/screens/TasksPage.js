@@ -11,8 +11,6 @@ import TaskItem from '../components/TaskItem';
 function TasksPage({navigation, getAllTasks, appState }) {
     const {tasks, user} = appState
 
-    console.log("Taks =>", tasks)
-
     useEffect(() => {
         getAllTasks()
     }, [])

@@ -2,14 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, Image, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
+import { connect } from 'react-redux';
+import ApplicantsItem from '../components/ApplicantsItem';
 
-export default function CreateTaskPage({ navigation }) {
+
+
+function CreateTaskPage({ navigation, appState, route }) {   
+    const task = route?.params?.task || {}
+
+
     return (
         <ScrollView>
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate("Tasks")
+                    navigation.goBack()
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
@@ -20,13 +27,23 @@ export default function CreateTaskPage({ navigation }) {
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text>
 
                 <View style={{alignItems:"center",marginTop:10}}>
-                    <Text style={{ fontSize: 30, fontWeight: "bold" }}>Task Name</Text>
-                    <Text style={{ fontSize: 12 }}>Description</Text>
+                    <Text style={{ fontSize: 30, fontWeight: "bold" }}>{task.title ||'Task Name'}</Text>
+                    <Text style={{ fontSize: 12 }}>{task.description || 'Description'}</Text>
                 </View>
 
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text>
 
-                <View style={styles.applicants}>
+                {
+                    task?.applications[0]? task?.applications.map(applicant => {
+                        return <ApplicantsItem key={applicant.id} data={applicant} navigation={navigation} />
+                    })
+                    : 
+                    <View>
+                        <Text>There are no applicants yet</Text>
+                    </View>
+                }
+
+                {/* <View style={styles.applicants}>
                     <Image source={require('../../assets/john-fornander-OY03NQ4VU7E-unsplash.jpg')} style={styles.DP} />
                     <View style={{ marginTop: 30, marginLeft: 10 }}>
                         <Text>Bruce Emmanuel</Text>
@@ -74,7 +91,7 @@ export default function CreateTaskPage({ navigation }) {
                     </View>
                     <Text style={{ color: "#429ef5", marginTop: 35, marginLeft: 10, fontWeight: "bold" }}>Accept</Text>
                 </View>
-                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text>
+                <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text> */}
 
             </View>
         </ScrollView>
@@ -109,3 +126,13 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
 })
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+}
+
+
+
+export default connect(mapStateToProps)(CreateTaskPage)
