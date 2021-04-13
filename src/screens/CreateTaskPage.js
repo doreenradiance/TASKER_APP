@@ -18,6 +18,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
     })
 
     const onChange = (val, name) => {
+        //change amount value to number
         if(name === 'amount') {
             setTask((prev) => ({
                 ...prev,
@@ -34,7 +35,6 @@ function CreateTaskPage({ navigation, appState, createTask }) {
 
     const onDateChange = (event, date) => {
         setShowDatePicker(false)
-        console.log("date", date)
         onChange(date, "date")
     }
 
@@ -57,6 +57,13 @@ function CreateTaskPage({ navigation, appState, createTask }) {
             })
         }
 
+        console.log(task)
+       
+
+        //create task
+        createTask(task, () => {
+            navigation.navigate("TasksPage")
+        })
     }
 
 
@@ -79,6 +86,8 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <TextInput
                         placeholderTextColor="#aaaaaa"
                         placeholder="Enter task name"
+                        value={task.title}
+                        onChangeText={(val) => onChange(val, "title")}
                     />
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -88,6 +97,8 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <TextInput 
                         placeholderTextColor="#aaaaaa"
                         placeholder="Task description should be as comprehensive"
+                        value={task.description}
+                        onChangeText={(val) => onChange(val, "description")}
                     />
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -97,6 +108,8 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <TextInput 
                         placeholderTextColor="#aaaaaa"
                         placeholder="Enter task location"
+                        value={task.location}
+                        onChangeText={(val) => onChange(val, "location")}
                     />
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -120,6 +133,8 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <TextInput 
                         placeholderTextColor="#aaaaaa"
                         placeholder="Enter mobile number"
+                        value={task.phone}
+                        onChangeText={(val) => onChange(val, "phone")}
                     />
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -130,6 +145,8 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                         placeholderTextColor="#aaaaaa"
                         placeholder="Set an amount"
                         keyboardType="numeric"
+                        value={task.amount}
+                        onChangeText={(val) => onChange(val, "amount")}
                     />
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>

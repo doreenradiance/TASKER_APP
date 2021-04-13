@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 })
 
-export const createTask = (task={}) => {
+export const createTask = (task={}, cb) => {
     
     return async (dispatch) => {
         const user = await db.collection("profiles").doc(userObj?.uid).get()
@@ -30,6 +30,7 @@ export const createTask = (task={}) => {
             await db.collection('profiles').doc(userObj?.uid).update({
                account: firebase.firestore.FieldValue.increment(-parseInt(task.amount)) 
             })
+            cb()
             showMessage({
                 message: "Task Created",
                 type: "success"
