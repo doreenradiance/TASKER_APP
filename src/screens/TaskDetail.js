@@ -32,6 +32,8 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
         }
     }
 
+    console.log("task details", taskDetails)
+
 
     useEffect(() => {
         getTask(taskId)
@@ -95,7 +97,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity disabled={taskDetails.applied} onPress={onApply}>
+                        <TouchableOpacity disabled={taskDetails?.applied} onPress={onApply}>
                             <View style={{
                                 backgroundColor: "#429ef5", width: 130, height: 45,
                                 marginTop: 40,
