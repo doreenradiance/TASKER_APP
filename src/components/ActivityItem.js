@@ -16,11 +16,11 @@ export default function ActivityItem(props) {
             props.navigation.navigate('Detail', {task: id, from: "activity"})
         }}>
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 20 }}>
-                <MaterialCommunityIcons name={icon} size={25} color={color} style={{ marginRight: 10, marginTop: 10 }} />
-                <Text style={{ marginRight: 35 }}>{title || 'Clean Washroom'}</Text>
+                <MaterialCommunityIcons name={icon} size={25} color={color} style={{ marginRight: 10,  }} />
+                <Text style={{ marginTop:5,marginRight: 35,marginBottom:20 }}>{title || 'Clean Washroom'}</Text>
                 <Text style={{ marginLeft: 30, fontSize: 20 }}>{location || 'Spintex'}</Text>
             </View>
-            <Text style={{ marginLeft: 53 }}>{time || 'Yesterday, 00:45am'}</Text>
+            <Text style={{ marginLeft:20 }}>{time || 'Yesterday, 00:45am'}</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 300, marginTop: 15, marginLeft: 25 }}></Text>  
         </TouchableOpacity>
     )
