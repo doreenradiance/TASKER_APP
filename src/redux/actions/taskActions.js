@@ -126,7 +126,7 @@ export const allTaskActivities = (id) => {
 }
 
 
-export const applyForTask = (id, user) => {
+export const applyForTask = (id, user, cb) => {
     return async (dispatch) => {
         db.collection('tasks').doc(id).update({
             applications: firebase.firestore.FieldValue.arrayUnion({
@@ -135,6 +135,7 @@ export const applyForTask = (id, user) => {
                 email: user.email
             }) 
         }).then(doc => {
+            cb()
             showMessage({
                 message: "Applied Successfully",
                 type: "success"
