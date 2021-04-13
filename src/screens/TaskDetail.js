@@ -28,11 +28,11 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
     const onApply = () => {
         if(!taskDetails?.applied) {
-            applyForTask(taskId, user)
+            applyForTask(taskId, user, () => {
+                navigation.goBack()
+            })
         }
     }
-
-    console.log("task details", taskDetails)
 
 
     useEffect(() => {
