@@ -20,7 +20,7 @@ function CreateTaskPage({ navigation, appState, route }) {
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }} >APPLICANTS</Text>
+                <Text style={{ color: "#429ef5", marginLeft: 80, fontWeight: "bold", fontSize: 25 }} >APPLICANTS</Text>
             </View>
 
                 
