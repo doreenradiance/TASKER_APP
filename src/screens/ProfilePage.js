@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     },
     profile: {
         color: "black",
-        marginLeft: 80,
+        marginLeft: 65,
         fontWeight: "bold",
         fontSize: 25
     },
