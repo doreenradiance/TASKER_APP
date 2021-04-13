@@ -19,7 +19,7 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate("Startup")
+                    navigation.navigate("Tasks")
                 }}>
                     <AntDesign name="back" size={24} color="black" style={styles.icon} />
                 </TouchableOpacity>

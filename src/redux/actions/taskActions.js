@@ -19,7 +19,7 @@ export const createTask = (task={}, cb) => {
         if(user.amount < task.amount) throw Error('Not Enough Balance to Created Task');
         db.collection("tasks").add({
             ...task,
-            createdBy: userObj.user.uid,
+            createdBy: userObj.uid,
             isCompleted: false,
             assignedTo: '',
             isAssigned: false,
@@ -30,6 +30,7 @@ export const createTask = (task={}, cb) => {
             await db.collection('profiles').doc(userObj?.uid).update({
                account: firebase.firestore.FieldValue.increment(-parseInt(task.amount)) 
             })
+            console.log("working 2")
             cb()
             showMessage({
                 message: "Task Created",
@@ -73,6 +74,24 @@ export const getAllTasks = () => {
 }
 
 
+//get one task
+export const getTask = (taskId) => {
+    return async (dispatch) => {
+        try {
+            const taskDetails = await db.collection('tasks').doc(taskId).get() 
+            
+            dispatch(dispatcher("task_details", taskDetails.data()))
+
+        }catch (e) {
+            showMessage({
+                message: e.message,
+                type: "danger"
+            }) 
+        }
+    }
+}
+
+
 // get all task activities
 export const allTaskActivities = (id) => {   
     return async (dispatch) => {
@@ -105,7 +124,8 @@ export const applyForTask = (id, user) => {
         db.collection('tasks').doc(id).update({
             applications: firebase.firestore.FieldValue.arrayUnion({
                 id: user.id,
-                name: user.name
+                name: user.name,
+                email: user.email
             }) 
         }).then(doc => {
             showMessage({

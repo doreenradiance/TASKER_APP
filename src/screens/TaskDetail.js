@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import {connect} from "react-redux"
 import { payment } from '../redux/actions/accountActions';
+import { applyForTask, getTask } from '../redux/actions/taskActions';
 
 
-function TaskDetail({navigation, appState, payment, route}) {
-    const {user, taskActivities} = appState
+
+
+
+function TaskDetail({navigation, appState, payment, applyForTask, getTask, route}) {
+    const {user, taskDetails} = appState
     const taskId = route.params.task
-    const task = taskActivities.find(task => task.id === taskId)
-    const {title, phone, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = task || {}
+    // const task = taskActivities.find(task => task.id === taskId)
+    const {title, phone, location, description, date, amount, isCompleted, createdBy, isAssigned, assignedTo} = taskDetails || {}
     const from = route?.params?.from
-    const time = date.toDate().toString()
+    const time = new Date(date?.seconds * 1000).toLocaleString()
+
 
     //text to be displayed on the button below
     const displayText = !isAssigned? "Not Assigned" : isCompleted? "Completed" : createdBy === user.id? "Make Payment" : "Pending"
@@ -21,6 +26,15 @@ function TaskDetail({navigation, appState, payment, route}) {
         payment(amount, assignedTo, taskId)
     }
 
+
+    const onApply = () => {
+        applyForTask(taskId, user)
+    }
+
+
+    useEffect(() => {
+        getTask(taskId)
+    }, [])
 
 
     return (
@@ -80,7 +94,7 @@ function TaskDetail({navigation, appState, payment, route}) {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={onApply}>
                             <View style={{
                                 backgroundColor: "#429ef5", width: 130, height: 45,
                                 marginTop: 40,
@@ -92,20 +106,36 @@ function TaskDetail({navigation, appState, payment, route}) {
                         </TouchableOpacity>
                     </View>
                 ) : (
-                    <TouchableOpacity onPress={() => {
-                        if(!isCompleted && (createdBy === user.id) && isAssigned) {
-                            makePayment()
-                        }
-                    }} >
-                        <View style={{
-                            backgroundColor: "#429ef5", width: 130, height: 45,
-                            marginTop: 40,
-                            marginLeft: 30,
-                            borderRadius: 5
-                        }}>
-                            <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>{displayText}</Text>
-                        </View>
-                    </TouchableOpacity> 
+                    <View style={{ flexDirection: "row", marginTop: 40 }}>
+                        <TouchableOpacity onPress={() => {
+                            if(!isCompleted && (createdBy === user.id) && isAssigned) {
+                                makePayment()
+                            }
+                        }} >
+                            <View style={{
+                                backgroundColor: "#429ef5", width: 130, height: 45,
+                                marginTop: 40,
+                                marginLeft: 30,
+                                borderRadius: 5
+                            }}>
+                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>{displayText}</Text>
+                            </View>
+                        </TouchableOpacity> 
+
+                        <TouchableOpacity onPress={() => {
+                            navigation.navigate("Applicants")
+                        }} >
+                            <View style={{
+                                backgroundColor: "#429ef5", width: 130, height: 45,
+                                marginTop: 40,
+                                marginLeft: 30,
+                                borderRadius: 5
+                            }}>
+                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>View Applicants</Text>
+                            </View>
+                        </TouchableOpacity> 
+                    </View>
+                    
                 )
             }
         </View>
@@ -137,4 +167,4 @@ const mapStateToProps =(state) => {
 }
 
 
-export default connect(mapStateToProps, {payment})(TaskDetail)
+export default connect(mapStateToProps, {payment, applyForTask, getTask})(TaskDetail)

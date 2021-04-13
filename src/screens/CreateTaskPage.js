@@ -62,7 +62,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
 
         //create task
         createTask(task, () => {
-            navigation.navigate("TasksPage")
+            navigation.navigate("Tasks")
         })
     }
 
