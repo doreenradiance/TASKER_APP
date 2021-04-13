@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Touchable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { getCurrentUser } from '../redux/actions/authActions';
 
-export default function ProfilePage({ navigation }) {
+
+
+function ProfilePage({ navigation, appState, getCurrentUser }) {
+
+    const {user} = appState
+    console.log("which user", user)
+
+    useEffect(() => {
+        getCurrentUser()
+    }, [])
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -18,8 +30,8 @@ export default function ProfilePage({ navigation }) {
                 navigation.navigate("ProfileEdit")
             }}>
             <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
-            <Text style={styles.name}>Hanson McQueen</Text>
-            <Text style={styles.location}>Los Angeles,City</Text>
+            <Text style={styles.name}>{user?.name || 'Hanson McQueen'}</Text>
+            <Text style={styles.location}>{user?.address || 'Los Angeles,City'}</Text>
             </TouchableOpacity>
 
             <View style={styles.info}>
@@ -96,3 +108,13 @@ const styles = StyleSheet.create({
     }
 
 })
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state 
+    }
+}
+
+export default connect(mapStateToProps, {getCurrentUser})(ProfilePage)

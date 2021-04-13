@@ -6,10 +6,16 @@ import { payment } from './accountActions'
 const db = firebase.firestore()
 let userObj;
 
+firebase.auth().onAuthStateChanged((user) => {
+    if(user) {
+        userObj = user
+    }
+})
+
 export const createTask = (task={}) => {
-    userObj = firebase.auth().currentUser
+    
     return async (dispatch) => {
-        const user = await db.collection("profiles").doc(userObj.user.uid).get()
+        const user = await db.collection("profiles").doc(userObj?.uid).get()
         if(user.amount < task.amount) throw Error('Not Enough Balance to Created Task');
         db.collection("tasks").add({
             ...task,
@@ -18,10 +24,10 @@ export const createTask = (task={}) => {
             assignedTo: '',
             isAssigned: false,
             applications: [],
-            date: firebase.firestore.FieldValue.serverTimestamp()
+            // date: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then(async (doc) => {
-            await db.collection('profiles').doc(userObj.user.uid).update({
+            await db.collection('profiles').doc(userObj?.uid).update({
                account: firebase.firestore.FieldValue.increment(-parseInt(task.amount)) 
             })
             showMessage({
@@ -83,8 +89,6 @@ export const allTaskActivities = (id) => {
                 data.id = doc.id
                 return taskActivities.push(data)
             })
-
-            console.log("user obj =>", newList)
 
             dispatch(dispatcher("task_activity", taskActivities))
         

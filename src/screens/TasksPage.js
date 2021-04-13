@@ -34,6 +34,14 @@ function TasksPage({navigation, getAllTasks, appState }) {
             </View>
             <Text style={styles.emptyText}></Text>
 
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('CreateTask')
+            }}>
+                <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
+                    <Text style={{ textAlign: "center", color: "white", marginTop: 10, }}>Create Task</Text>
+                </View>
+            </TouchableOpacity>
+
             <ScrollView>
                 {
                     tasks[0]? tasks.map(task => {

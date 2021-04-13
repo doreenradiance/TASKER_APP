@@ -5,10 +5,12 @@ import {connect } from 'react-redux'
 import AccountHistoryItem from '../components/AccountHistoryItem';
 import { numberWithCommas } from '../utils';
 
+
 function AccountPage({ navigation, appState }) {
     const {user} = appState
     const {account, accountHistory} = user
     const balance = numberWithCommas(account)
+
 
     return (
         <View style={styles.container}>

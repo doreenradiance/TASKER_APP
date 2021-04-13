@@ -5,7 +5,7 @@ import { StyleSheet, Text, ScrollView, TouchableOpacity, View, Image } from 'rea
 
 function TaskItem (props) {
     const {title, amount, location, id } = props.data
-    console.log(props.data)
+
     return (
         <>
             <View style={styles.tasks} >

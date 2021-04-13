@@ -21,6 +21,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
     //check if current users profile is being displayed
     const current = currentUser.id === user.id
 
+
     const saveProfile = () => {
         const profile = {
             "name": name,
@@ -38,15 +39,26 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
     useEffect(() => {
         (async function() {
-            const userId = route.params.other
+            const userId = route.params?.other
+            
             if(userId) {
                 const user = await getUser(userId)
                 setUser(user)
+                setName(user.name)
+                setEmail(user.email)
+                setAddress(user.address)
+                setPhone(user.phone)
+                setSkills(user.skills)
             }else {
                 setUser(currentUser)
+                setName(currentUser.name)
+                setEmail(currentUser.email)
+                setAddress(currentUser.address)
+                setPhone(currentUser.phone)
+                setSkills(currentUser.skills)
             }          
         })()
-    }, [])
+    }, [appState])
 
 
 

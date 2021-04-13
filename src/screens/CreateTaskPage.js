@@ -1,8 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { AntDesign } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { createTask } from '../redux/actions/taskActions';
+import { showMessage } from 'react-native-flash-message';
 
-export default function CreateTaskPage({ navigation }) {
+function CreateTaskPage({ navigation, appState, createTask }) {
+    const [showDatePicker, setShowDatePicker] = useState(false)
+    const [task , setTask] = useState({
+        title: "",
+        description: "",
+        location: "",
+        date: "",
+        phone: "",
+        amount: 0
+    })
+
+    const onChange = (val, name) => {
+        if(name === 'amount') {
+            setTask((prev) => ({
+                ...prev,
+                [name]: parseInt(val)
+            }))
+        }else {
+            setTask(prev => ({
+                ...prev,
+                [name]: val
+            }))
+        }
+    }
+
+
+    const onDateChange = (event, date) => {
+        setShowDatePicker(false)
+        console.log("date", date)
+        onChange(date, "date")
+    }
+
+    
+
+    const onCreateTask = () => {
+        //check for empty field
+        const isEmpty = []
+        for(const key in task) {
+            if(!task[key]) {
+                isEmpty.push(key)
+            }
+        }
+
+        if(isEmpty[0]) {
+            const msg = isEmpty.reduce((acc, val) => acc + ", " + val)
+            return showMessage({
+                message: msg + " must not be empty",
+                type: "danger"
+            })
+        }
+
+    }
+
+
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -18,7 +75,7 @@ export default function CreateTaskPage({ navigation }) {
 
             <View>
                 <View>
-                    <Text>Name</Text>
+                    <Text>Title</Text>
                     <TextInput
                         placeholderTextColor="#aaaaaa"
                         placeholder="Enter task name"
@@ -46,10 +103,15 @@ export default function CreateTaskPage({ navigation }) {
 
                 <View>
                     <Text>Date</Text>
-                    <TextInput 
-                        placeholderTextColor="#aaaaaa"
-                        placeholder="Deadline for applicants of your task"
-                    />
+                    <Text onPress={() => setShowDatePicker(true)}>{task.date?.toString() || "Enter Date"}</Text>
+                    {
+                        showDatePicker && (
+                            <DateTimePicker 
+                                value={task.date || new Date()}
+                                onChange={onDateChange}
+                            />
+                        )
+                    }
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 
@@ -67,12 +129,13 @@ export default function CreateTaskPage({ navigation }) {
                     <TextInput 
                         placeholderTextColor="#aaaaaa"
                         placeholder="Set an amount"
+                        keyboardType="numeric"
                     />
                 </View>
                 <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onCreateTask}>
                     <View style={{
                         backgroundColor: "#429ef5", width: 200, height: 45,
                         marginTop: 40,
@@ -94,3 +157,11 @@ const styles = StyleSheet.create({
         // alignItems: "center",
     },
 })
+
+const mapStateToProps = (state) => {
+    return {
+        appState: state
+    }
+} 
+
+export default connect(mapStateToProps, {createTask})(CreateTaskPage)
