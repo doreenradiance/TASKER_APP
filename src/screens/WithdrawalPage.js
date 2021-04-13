@@ -37,7 +37,9 @@ function WithdrawalPage({navigation, withdraw, appState}) {
 
     const onWithdraw = () => {
         if(!details.error) {
-            withdraw(details.withdraw, id)
+            withdraw(details.withdraw, id, () => {
+                navigation.navigate("Account")
+            })
         }
     }
 

@@ -14,7 +14,9 @@ function DepositPage({navigation, appState, deposit}) {
     const [amt, setAmt] = useState('')
 
     const onDeposit = () => {
-        deposit(amt, id)
+        deposit(amt, id, () => {
+            navigation.navigate("Account")
+        })
     }
 
 

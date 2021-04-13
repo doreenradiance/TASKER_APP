@@ -9,7 +9,6 @@ import { getCurrentUser } from '../redux/actions/authActions';
 function ProfilePage({ navigation, appState, getCurrentUser }) {
 
     const {user} = appState
-    console.log("which user", user)
 
     useEffect(() => {
         getCurrentUser()

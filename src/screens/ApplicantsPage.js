@@ -35,7 +35,7 @@ function CreateTaskPage({ navigation, appState, route }) {
 
                 {
                     task?.applications[0]? task?.applications.map(applicant => {
-                        return <ApplicantsItem key={applicant.id} data={applicant} navigation={navigation} />
+                        return <ApplicantsItem key={applicant.id} data={applicant} assignedTo={task.assignedTo} taskId={task.id} navigation={navigation} />
                     })
                     : 
                     <View>

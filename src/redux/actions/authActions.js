@@ -7,7 +7,6 @@ let userObj;
 firebase.auth().onAuthStateChanged((user) => {
     if(user) {
         userObj = user
-        console.log("current user =>", userObj)
     }
 })
 

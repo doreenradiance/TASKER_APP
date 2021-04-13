@@ -17,7 +17,6 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
     const from = route?.params?.from
     const time = new Date(date?.seconds * 1000).toLocaleString()
 
-
     //text to be displayed on the button below
     const displayText = !isAssigned? "Not Assigned" : isCompleted? "Completed" : createdBy === user.id? "Make Payment" : "Pending"
 
@@ -126,9 +125,11 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
                         <TouchableOpacity onPress={() => {
                             navigation.navigate("Applicants", {task: {
+                                id: taskId,
                                 title,
                                 description,
-                                applications
+                                applications,
+                                assignedTo
                             } })
                         }} >
                             <View style={{

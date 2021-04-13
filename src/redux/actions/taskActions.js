@@ -99,7 +99,8 @@ export const getTask = (taskId) => {
 
 
 // get all task activities
-export const allTaskActivities = (id) => {   
+export const allTaskActivities = (id) => {  
+    
     return async (dispatch) => {
         try {
             const newList =  []
@@ -148,17 +149,19 @@ export const applyForTask = (id, user) => {
 }
 
 
-export const assignTask = (taskId, userId) => {
+export const assignTask = (taskId, userId, cb) => {
     return async (dispatch) => {
         db.collection('tasks').doc(taskId).update({
             assignedTo: userId,
             isAssigned: true
         }).then(doc => {
+            cb()
             showMessage({
                 message: "Task Assigned",
                 type: "success"
             })
         }).catch(e => {
+            console.log(e.message)
             showMessage({
                 message: e.message,
                 type: "danger"

@@ -4,7 +4,7 @@ import { numberWithCommas } from '../../utils'
 
 const db = firebase.firestore()
 
-export function withdraw(amt, userId) {
+export function withdraw(amt, userId, cb) {
     return async (dispatch) => {
         const fees = parseInt(amt) * 0.01
         db.collection('profiles').doc(userId).update({
@@ -23,6 +23,7 @@ export function withdraw(amt, userId) {
                     date: {seconds: Date.now() / 1000}
                 })
             })
+            cb()
             showMessage({
                 message: "Withdrawal Successful",
                 type: 'success'
@@ -36,7 +37,7 @@ export function withdraw(amt, userId) {
     }
 }
 
-export function deposit(amt, userId) {
+export function deposit(amt, userId, cb) {
     return async (dispatch) => {
         db.collection('profiles').doc(userId).update({
             account: firebase.firestore.FieldValue.increment(parseInt(amt)),
@@ -46,6 +47,7 @@ export function deposit(amt, userId) {
                 date: {seconds: Date.now() / 1000}
             })
         }).then(() => {
+            cb()
             showMessage({
                 message: "deposit Successful",
                 type: 'success'

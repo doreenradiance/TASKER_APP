@@ -12,6 +12,7 @@ function AccountPage({ navigation, appState }) {
     const balance = numberWithCommas(account)
 
 
+
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
@@ -54,7 +55,8 @@ function AccountPage({ navigation, appState }) {
 
             {
                 accountHistory[0]? accountHistory.map(itm => {
-                   return <AccountHistoryItem key={itm.date} data={itm} />
+                    console.log("check keys" , itm.date?.seconds)
+                   return <AccountHistoryItem key={itm.date?.seconds} data={itm} />
                 }) 
                 : 
                 <View >
