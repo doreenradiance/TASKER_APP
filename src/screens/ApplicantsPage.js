@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 export default function CreateTaskPage({ navigation }) {
     return (
+<<<<<<< HEAD
         <ScrollView>
             <View style={styles.container}>
                 <View style={styles.header}>
@@ -15,6 +16,17 @@ export default function CreateTaskPage({ navigation }) {
                     </TouchableOpacity>
                     <Text style={{ color: "#429ef5", marginLeft: 70, fontWeight: "bold", fontSize: 25 }} >APPLICANTS</Text>
                 </View>
+=======
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate("Tasks")
+                }}>
+                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                </TouchableOpacity>
+                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }} >APPLICANTS</Text>
+            </View>
+>>>>>>> 2ae65784679ed5882efcf17a38df72a2c3959379
 
                 
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text>
