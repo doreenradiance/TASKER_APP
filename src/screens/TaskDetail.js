@@ -28,7 +28,9 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
 
     const onApply = () => {
-        applyForTask(taskId, user)
+        if(!taskDetails?.applied) {
+            applyForTask(taskId, user)
+        }
     }
 
 
@@ -94,14 +96,14 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={onApply}>
+                        <TouchableOpacity disabled={taskDetails.applied} onPress={onApply}>
                             <View style={{
                                 backgroundColor: "#429ef5", width: 130, height: 45,
                                 marginTop: 40,
                                 marginLeft: 30,
                                 borderRadius: 5
                             }}>
-                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Apply</Text>
+                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {taskDetails?.applied? 'Applied':'Apply'}</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

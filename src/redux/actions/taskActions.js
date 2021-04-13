@@ -30,7 +30,6 @@ export const createTask = (task={}, cb) => {
             await db.collection('profiles').doc(userObj?.uid).update({
                account: firebase.firestore.FieldValue.increment(-parseInt(task.amount)) 
             })
-            console.log("working 2")
             cb()
             showMessage({
                 message: "Task Created",
@@ -53,10 +52,13 @@ export const getAllTasks = () => {
         db.collection('tasks').onSnapshot((snapShot) => {
             const tasks = []
             snapShot.forEach(doc => {
+                //exclude tasks created by the current user
+                if(doc.data().createdBy === userObj.uid) return
                 //exclude tasks that have already been assigned
                 if(doc.data().isAssigned) return 
                 const data = doc.data()
                 data.id = doc.id
+                data.applied = !!(doc.data().applications.find(application => application.id === userObj.uid))
                 return tasks.push(data)
             })
 
@@ -79,8 +81,12 @@ export const getTask = (taskId) => {
     return async (dispatch) => {
         try {
             const taskDetails = await db.collection('tasks').doc(taskId).get() 
+            const task = taskDetails.data()
+
+            //check if current user applied
+            task.applied = !!(task.applications.find(application => application.id === userObj.uid))
             
-            dispatch(dispatcher("task_details", taskDetails.data()))
+            dispatch(dispatcher("task_details", task))
 
         }catch (e) {
             showMessage({
