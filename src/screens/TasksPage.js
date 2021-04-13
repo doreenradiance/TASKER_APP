@@ -38,7 +38,7 @@ function TasksPage({navigation, getAllTasks, appState }) {
                 navigation.navigate('CreateTask')
             }}>
                 <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
-                    <Text style={{ textAlign: "center", color: "white", marginTop: 10, }}>Create Task</Text>
+                    <Text style={{ textAlign: "center", color: "white", marginTop: 11, }}>Create Task</Text>
                 </View>
             </TouchableOpacity>
 
