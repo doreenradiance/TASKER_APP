@@ -7,7 +7,7 @@ export default function CreateTaskPage({ navigation }) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate("TasksPage")
+                    navigation.navigate("Tasks")
                 }}>
                     <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                 </TouchableOpacity>
