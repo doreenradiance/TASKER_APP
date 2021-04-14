@@ -125,6 +125,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             </View>
                         </TouchableOpacity> 
 
+                        {createdBy === user.id &&
                         <TouchableOpacity onPress={() => {
                             navigation.navigate("Applicants", {task: {
                                 id: taskId,
@@ -143,6 +144,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                                 <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>View Applicants</Text>
                             </View>
                         </TouchableOpacity> 
+                        }
                     </View>
                     
                 )
