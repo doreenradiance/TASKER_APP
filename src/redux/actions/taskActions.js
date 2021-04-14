@@ -52,6 +52,8 @@ export const getAllTasks = () => {
         db.collection('tasks').onSnapshot((snapShot) => {
             const tasks = []
             snapShot.forEach(doc => {
+                //exclude tasks already applied for
+                if(!!(doc.data().applications.find(application => application.id === userObj.uid))) return
                 //exclude tasks created by the current user
                 if(doc.data().createdBy === userObj.uid) return
                 //exclude tasks that have already been assigned
