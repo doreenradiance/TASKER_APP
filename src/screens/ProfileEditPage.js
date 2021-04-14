@@ -179,8 +179,9 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                     }}>
                         <View style={{
                             backgroundColor: "#429ef5", width: 120, height: 45,
-                            marginTop: 40,
-                            marginLeft: 30,
+                            // marginTop: 40,
+                            // marginLeft: 30,
+                            // justifyContent:"space-around",
                             borderRadius: 5
                         }}>
                             <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {type === "edit" ? 'Save' : 'Edit'}</Text>

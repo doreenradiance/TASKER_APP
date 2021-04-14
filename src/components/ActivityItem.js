@@ -15,10 +15,12 @@ export default function ActivityItem(props) {
         <TouchableOpacity onPress={() => {
             props.navigation.navigate('Detail', {task: id, from: "activity"})
         }}>
-            <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 20 }}>
-                <MaterialCommunityIcons name={icon} size={25} color={color} style={{ marginRight: 10,  }} />
-                <Text style={{ marginTop:5,marginRight: 35,marginBottom:20 }}>{title || 'Clean Washroom'}</Text>
-                <Text style={{ marginLeft: 30, fontSize: 20 }}>{location || 'Spintex'}</Text>
+            <View style={{ flexDirection: "row", justifyContent:"space-between",marginHorizontal: 20, marginTop: 20 }}>
+                <View style={{flexDirection: "row"}}>
+                    <MaterialCommunityIcons name={icon} size={25} color={color} style={{ marginRight: 10 }} />
+                    <Text style={{ fontSize: 18  }}>{title || 'Clean Washroom'}</Text>
+                </View>
+                <Text style={{ fontSize: 18 }}>{location || 'Spintex'}</Text>
             </View>
             <Text style={{ marginLeft:20 }}>{time || 'Yesterday, 00:45am'}</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 300, marginTop: 15, marginLeft: 25 }}></Text>  

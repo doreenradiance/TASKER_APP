@@ -19,7 +19,7 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
                 <TouchableOpacity onPress={()=>{
-                    navigation.navigate('Tasks')
+                    navigation.navigate('Profile')
                 }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
