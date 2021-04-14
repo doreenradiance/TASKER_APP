@@ -55,8 +55,7 @@ function AccountPage({ navigation, appState }) {
 
             {
                 accountHistory[0]? accountHistory.map(itm => {
-                    console.log("check keys" , itm.date?.seconds)
-                   return <AccountHistoryItem key={itm.date?.seconds} data={itm} />
+                   return <AccountHistoryItem key={Math.random() * 10000} data={itm} />
                 }) 
                 : 
                 <View >
