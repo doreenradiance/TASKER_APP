@@ -86,7 +86,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
             {
                 !(!!from)? (
                     <View style={{ flexDirection: "row", marginTop: 40 }}>
-                        <TouchableOpacity>
+                        {/* <TouchableOpacity>
                             <View style={{
                                 backgroundColor: "red", width: 130, height: 45,
                                 marginTop: 40,
@@ -95,7 +95,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             }}>
                                 <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Report</Text>
                             </View>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
 
                         <TouchableOpacity disabled={taskDetails?.applied} onPress={onApply}>
                             <View style={{
@@ -103,7 +103,8 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                                 marginTop: 40,
                                 marginLeft: 30,
                                 borderRadius: 5,
-                                opacity: taskDetails?.applied? 0.5 : 1                            }}>
+                                opacity: taskDetails?.applied? 0.5 : 1, 
+                                }}>
                                 <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {taskDetails?.applied? 'Applied':'Apply'}</Text>
                             </View>
                         </TouchableOpacity>

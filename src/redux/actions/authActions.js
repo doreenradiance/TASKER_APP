@@ -47,8 +47,9 @@ export function login(email, password, cb) {
             
             const profile = await db.collection('profiles').doc(user.user.uid).get()
             dispatch(dispatcher("log_in", {...profile.data(), id: profile.id }))
-            cb()
+            cb(true)
         }catch (e) {
+            cb()
             showMessage({
                 message: e.message,
                 type: "danger"

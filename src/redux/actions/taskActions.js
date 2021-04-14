@@ -70,6 +70,7 @@ export const getAllTasks = () => {
                     message: err.message,
                     type: "danger"
                 })
+                throw err
             }
         )
     }
@@ -104,10 +105,10 @@ export const allTaskActivities = (id) => {
     return async (dispatch) => {
         try {
             const newList =  []
-            const created = await db.collection('tasks').where("createdBy", "==", id ).get()
+            // const created = await db.collection('tasks').where("createdBy", "==", id ).get()
             const assigned = await db.collection('tasks').where("assignedTo", "==", id ).get()
 
-            created.forEach(doc => newList.push(doc));
+            // created.forEach(doc => newList.push(doc));
             assigned.forEach(doc => newList.push(doc));
             
             const taskActivities = []
@@ -121,6 +122,54 @@ export const allTaskActivities = (id) => {
         
         }catch (e) {
             console.log(e.message)
+        }
+    }
+}
+
+// get all created tasks
+export const getCreatedTask = () => {  
+
+    return async (dispatch) => {
+        try {
+            const newList =  []
+            const created = await db.collection('tasks').where("createdBy", "==", userObj.uid ).get()
+
+            created.forEach(doc => newList.push(doc));
+            
+            const tasks = []
+            newList.forEach(doc => {
+                const data = doc.data()
+                data.id = doc.id
+                return tasks.push(data)
+            })
+
+            dispatch(dispatcher("created_task", tasks))       
+        }catch (e) {
+            console.log(e.message)
+        }
+    }
+}
+
+
+export const appliedToTasks = () => {
+    return async (dispatch) => {
+        try {
+            const taskList = []
+            const tasks = await db.collection("tasks").get()
+
+            tasks.forEach(doc => {
+                if(!!doc.data().applications.find(itm => itm.id === userObj.uid) && !doc.data().isAssigned) {
+                    const data = doc.data()
+                    data.id = doc.id
+                    return taskList.push(data)
+                }
+            })
+
+            dispatch(dispatcher("all_tasks", taskList))  
+
+        }catch (e) {
+            console.log(e.message)
+            throw e
         }
     }
 }

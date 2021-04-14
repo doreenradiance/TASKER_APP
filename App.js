@@ -19,6 +19,7 @@ import ApplicantsPage from "./src/screens/ApplicantsPage";
 import store from './src/redux/store';
 import FlashMessage from "react-native-flash-message";
 import { LogBox } from 'react-native';
+import MyTasks from './src/screens/MyTasks';
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -113,6 +114,13 @@ export default function App() {
               header: () => null
             }}
             name="Applicants" component={ApplicantsPage}
+          />
+
+          <Stack.Screen
+            options={{
+              header: () => null
+            }}
+            name="MyTasks" component={MyTasks}
           />
         </Stack.Navigator>
       </NavigationContainer>

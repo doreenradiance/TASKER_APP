@@ -73,7 +73,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => {
-                        navigation.navigate("Tasks")
+                        navigation.goBack()
                     }}>
                         <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
                     </TouchableOpacity>
@@ -147,7 +147,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                             placeholderTextColor="#aaaaaa"
                             placeholder="Set an amount"
                             keyboardType="numeric"
-                            value={task.amount}
+                            value={`${task.amount||""}`}
                             onChangeText={(val) => onChange(val, "amount")}
                         />
                     </View>

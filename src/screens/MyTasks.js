@@ -1,17 +1,25 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 import {connect} from 'react-redux'
-import { allTaskActivities } from '../redux/actions/taskActions';
+import { allTaskActivities, createTask, getCreatedTask } from '../redux/actions/taskActions';
 import { ScrollView } from 'react-native-gesture-handler';
 import ActivityItem from '../components/ActivityItem';
 
-function ActivityPage({navigation, allTaskActivities, appState}) {
-    const {taskActivities, user} = appState
+function MyTasks({navigation, getCreatedTask, appState}) {
+    const {myTasks, user} = appState
+    const [loading, setLoading ] = useState(false)
     
 
     useEffect(() => {
-        allTaskActivities(user.id)
+        try{
+            setLoading(true)
+            getCreatedTask()
+        }catch (e) {
+
+        }finally{
+            setLoading(false)
+        }
     }, [])
 
 
@@ -23,12 +31,12 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
                 }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Activity</Text>
+                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>My Tasks</Text>
             </View>
 
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
 
-            {/* <TouchableOpacity onPress={() => {
+            <TouchableOpacity onPress={() => {
                 navigation.navigate('CreateTask')
             }}>
                 <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
@@ -36,16 +44,21 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
                 </View>
             </TouchableOpacity>
             
-            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text> */}
+            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
 
             <ScrollView>
                 {
-                    taskActivities[0]? taskActivities.map(task => {
+                    !loading?
+                    myTasks[0]? myTasks.map(task => {
                         return <ActivityItem key={task.id} data={task} navigation={navigation} />
                     })
                     : 
                     <View style={{marginLeft:10}}>
-                        <Text>There are no tasks Available</Text>
+                        <Text>There are no tasks created yet</Text>
+                    </View>
+                    :
+                    <View style={{marginLeft:10}}>
+                        <Text>Loading...</Text>
                     </View>
                 }
             </ScrollView>
@@ -115,4 +128,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {allTaskActivities})(ActivityPage)
+export default connect(mapStateToProps, {getCreatedTask})(MyTasks)

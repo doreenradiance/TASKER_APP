@@ -1,19 +1,44 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View, Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { connect } from 'react-redux'
-import { getAllTasks } from '../redux/actions/taskActions';
+import { appliedToTasks, getAllTasks } from '../redux/actions/taskActions';
 import TaskItem from '../components/TaskItem';
 
 
 
 
-function TasksPage({navigation, getAllTasks, appState }) {
+
+function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
     const {tasks, user} = appState
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        getAllTasks()
+        getTasks()
     }, [])
+
+    const getApplied = () => {
+        try {
+            setLoading(true)
+            appliedToTasks()
+        }catch (e) {
+
+        }finally {
+            setLoading(false)
+        }
+    }
+
+    //get all available tasks
+    const getTasks = () => {
+        try {
+            setLoading(true)
+            getAllTasks()
+        }catch (e) {
+
+        }finally {
+            setLoading(false)
+        } 
+    }
 
     return (
         <View style={styles.container}>
@@ -35,7 +60,7 @@ function TasksPage({navigation, getAllTasks, appState }) {
             <Text style={styles.emptyText}></Text>
 
             <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={getTasks}>
                     <View style={{
                         backgroundColor: "#429ef5", width: 130, height: 45,
                         marginTop: 10,
@@ -46,7 +71,7 @@ function TasksPage({navigation, getAllTasks, appState }) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={getApplied}>
                     <View style={{
                         backgroundColor: "#429ef5", width: 130, height: 45,
                         marginTop: 10,
@@ -61,12 +86,17 @@ function TasksPage({navigation, getAllTasks, appState }) {
 
             <ScrollView>
                 {
+                    !loading? 
                     tasks[0]? tasks.map(task => {
                         return <TaskItem key={task.id} data={task} navigation={navigation} />
                     })
                     : 
-                    <View>
+                    <View style={{textAlign: "center", marginTop:10,}}>
                         <Text>There are no tasks Available</Text>
+                    </View>
+                    : 
+                    <View style={{textAlign: "center", marginTop:10,}}>
+                        <Text style={{opacity: 0.8}}>Loading...</Text>
                     </View>
                 }
 
@@ -232,4 +262,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {getAllTasks})(TasksPage)
+export default connect(mapStateToProps, {getAllTasks, appliedToTasks})(TasksPage)

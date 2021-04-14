@@ -7,13 +7,17 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 function LoginPage({ navigation, login }) {
-
+    const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const onLogin = () => {
-        login(email.trim(), password, () => {
-            navigation.navigate("Tasks")
+        setLoading(true)
+        login(email.trim(), password, (state) => {
+            setLoading(false)
+            if(state) {
+                navigation.navigate("Tasks")
+            }
         })
     }
 
@@ -61,7 +65,7 @@ function LoginPage({ navigation, login }) {
                 onPress={() => {
                     onLogin()
                 }} style={styles.loginTextButton}>
-                <Text style={styles.loginText}>Log In</Text>
+                <Text style={styles.loginText}>{loading? 'Loading...' : 'Log In'}</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>

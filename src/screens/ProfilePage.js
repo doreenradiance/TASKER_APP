@@ -35,7 +35,7 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
 
             <View style={styles.info}>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('Tasks')
+                    navigation.navigate('MyTasks')
                 }}>
                     <Text style={{ fontSize: 17, marginLeft: 45 }}> My Tasks</Text>
                 </TouchableOpacity>
