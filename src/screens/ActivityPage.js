@@ -28,6 +28,16 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
 
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
 
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('CreateTask')
+            }}>
+                <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
+                    <Text style={{ textAlign: "center", color: "white", marginTop: 11, }}>Create Task</Text>
+                </View>
+            </TouchableOpacity>
+            
+            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
+
             <ScrollView>
                 {
                     taskActivities[0]? taskActivities.map(task => {

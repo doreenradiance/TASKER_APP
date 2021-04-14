@@ -34,13 +34,30 @@ function TasksPage({navigation, getAllTasks, appState }) {
             </View>
             <Text style={styles.emptyText}></Text>
 
-            <TouchableOpacity onPress={() => {
-                navigation.navigate('CreateTask')
-            }}>
-                <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
-                    <Text style={{ textAlign: "center", color: "white", marginTop: 11, }}>Create Task</Text>
-                </View>
-            </TouchableOpacity>
+            <View style={{ flexDirection: "row" }}>
+                <TouchableOpacity>
+                    <View style={{
+                        backgroundColor: "#429ef5", width: 130, height: 45,
+                        marginTop: 10,
+                        marginLeft: 5,
+                        borderRadius: 5
+                    }}>
+                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>Tasks</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style={{
+                        backgroundColor: "#429ef5", width: 130, height: 45,
+                        marginTop: 10,
+                        marginLeft: 30,
+                        borderRadius: 5,
+                        }}>
+                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+
 
             <ScrollView>
                 {
