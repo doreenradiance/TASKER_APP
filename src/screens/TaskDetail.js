@@ -102,8 +102,8 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                                 backgroundColor: "#429ef5", width: 130, height: 45,
                                 marginTop: 40,
                                 marginLeft: 30,
-                                borderRadius: 5
-                            }}>
+                                borderRadius: 5,
+                                opacity: taskDetails?.applied? 0.5 : 1                            }}>
                                 <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {taskDetails?.applied? 'Applied':'Apply'}</Text>
                             </View>
                         </TouchableOpacity>

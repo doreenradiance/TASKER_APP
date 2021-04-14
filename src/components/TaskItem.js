@@ -12,7 +12,7 @@ function TaskItem (props) {
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate('Detail', {task: id})
                 }}>
-                    <View style={{ flexDirection: "row", justifyContent:"space-between" }}>
+                    <View style={{ flexDirection: "row", justifyContent:"space-between",marginTop:10 }}>
                         <View>
                             <Text style={{fontSize:20}}>{title || 'Fix my plumbing'}</Text>
                             <Text>{location || 'Madina'}</Text>

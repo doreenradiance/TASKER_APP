@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Touchable } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { getCurrentUser } from '../redux/actions/authActions';
 
 function ProfilePage({ navigation, appState, getCurrentUser }) {
 
-    const {user} = appState
+    const { user } = appState
 
     useEffect(() => {
         getCurrentUser()
@@ -28,16 +28,16 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
             <TouchableOpacity onPress={() => {
                 navigation.navigate("ProfileEdit")
             }}>
-            <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
-            <Text style={styles.name}>{user?.name || 'Hanson McQueen'}</Text>
-            <Text style={styles.location}>{user?.address || 'Los Angeles,City'}</Text>
+                <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
+                <Text style={styles.name}>{user?.name || 'Hanson McQueen'}</Text>
+                <Text style={styles.location}>{user?.address || 'Los Angeles,City'}</Text>
             </TouchableOpacity>
 
             <View style={styles.info}>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Tasks')
                 }}>
-                    <Text style={{ fontSize: 17, marginLeft: 45 }}>Tasks</Text>
+                    <Text style={{ fontSize: 17, marginLeft: 45 }}> My Tasks</Text>
                 </TouchableOpacity>
                 <AntDesign name="right" size={24} color="black" style={{ marginLeft: 210 }} />
             </View>
@@ -54,10 +54,10 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 
             <View style={styles.info}>
-            <TouchableOpacity onPress={()=>{
-                navigation.navigate('Activity')
-            }}>
-                <Text style={{ fontSize: 17, marginLeft: 45 }}>Activity</Text>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Activity')
+                }}>
+                    <Text style={{ fontSize: 17, marginLeft: 45 }}>Activity</Text>
                 </TouchableOpacity>
                 <AntDesign name="right" size={24} color="black" style={{ marginLeft: 200 }} />
             </View>
@@ -112,8 +112,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return {
-        appState: state 
+        appState: state
     }
 }
 
-export default connect(mapStateToProps, {getCurrentUser})(ProfilePage)
+export default connect(mapStateToProps, { getCurrentUser })(ProfilePage)

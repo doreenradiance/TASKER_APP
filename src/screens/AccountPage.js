@@ -29,25 +29,26 @@ function AccountPage({ navigation, appState }) {
                 <Text style={{ textAlign: "center", marginTop: 20 }}>Current Balance</Text>
                 <Text style={{ textAlign: "center", marginTop: 10, fontSize: 25 }}>{`GHC${balance ||'23, 012.65'}`}</Text>
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 20 }}></Text>
-
-                <View style={{ flexDirection: "row", marginTop: 20, }}>
-                    <TouchableOpacity onPress={() => {
-                        navigation.navigate('Withdraw')
-                    }}>
-                    <Text style={{ marginLeft: 10, fontSize: 15 }}>Withdraw Cash</Text>
-                    </TouchableOpacity>
-                <Ionicons name="chevron-forward" size={26} color="black" style={{ marginLeft: 170 }} />
-                </View>
+                <TouchableOpacity onPress={() => {     
+                    navigation.navigate('Withdraw')
+                }}>
+                    <View style={{ flexDirection: "row", marginTop: 20, }}>
+                    
+                        <Text style={{ marginLeft: 10, fontSize: 15 }}>Withdraw Cash</Text>
+                        
+                    <Ionicons name="chevron-forward" size={26} color="black" style={{ marginLeft: 170 }} />
+                    </View>
+                </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
 
-            <View style={{ flexDirection: "row", marginTop: 20, }}>
-                    <TouchableOpacity onPress={() => {
+            <TouchableOpacity onPress={() => {
                         navigation.navigate('Deposit')
                     }}>
+            <View style={{ flexDirection: "row", marginTop: 20, }}>
                     <Text style={{ marginLeft: 20, fontSize: 15 }}>Deposit</Text>
-                    </TouchableOpacity>
                 <Ionicons name="chevron-forward" size={26} color="black" style={{ marginLeft: 210 }} />
                 </View>
+                </TouchableOpacity>
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
 
             <Text style={{ marginLeft: 20, marginTop: 10, color: "#807878" }}>History</Text>
@@ -55,8 +56,7 @@ function AccountPage({ navigation, appState }) {
 
             {
                 accountHistory[0]? accountHistory.map(itm => {
-                    console.log("check keys" , itm.date?.seconds)
-                   return <AccountHistoryItem key={itm.date?.seconds} data={itm} />
+                   return <AccountHistoryItem key={Math.random() * 10000} data={itm} />
                 }) 
                 : 
                 <View >

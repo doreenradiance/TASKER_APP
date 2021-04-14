@@ -39,7 +39,7 @@ function CreateTaskPage({ navigation, appState, route }) {
                     })
                     : 
                     <View>
-                        <Text>There are no applicants yet</Text>
+                        <Text style={{textAlign: "center", marginTop: 10}}>There are no applicants yet</Text>
                     </View>
                 }
 

@@ -19,13 +19,23 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
                 <TouchableOpacity onPress={()=>{
-                    navigation.navigate('Tasks')
+                    navigation.navigate('Profile')
                 }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
                 <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Activity</Text>
             </View>
 
+            <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
+
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('CreateTask')
+            }}>
+                <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
+                    <Text style={{ textAlign: "center", color: "white", marginTop: 11, }}>Create Task</Text>
+                </View>
+            </TouchableOpacity>
+            
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
 
             <ScrollView>

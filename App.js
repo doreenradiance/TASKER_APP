@@ -18,6 +18,9 @@ import DepositPage from "./src/screens/DepositPage";
 import ApplicantsPage from "./src/screens/ApplicantsPage";
 import store from './src/redux/store';
 import FlashMessage from "react-native-flash-message";
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Setting a timer']);
 
 const Stack = createStackNavigator()
 
