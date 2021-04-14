@@ -125,7 +125,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             </View>
                         </TouchableOpacity> 
 
-                        {createdBy === user.id &&
+                        {createdBy === user.id && !isCompleted &&
                         <TouchableOpacity onPress={() => {
                             navigation.navigate("Applicants", {task: {
                                 id: taskId,
