@@ -12,12 +12,15 @@ function TaskItem (props) {
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate('Detail', {task: id})
                 }}>
-                    <View style={{ flexDirection: "row", marginRight: 50 }}>
-                        <Text style={{ marginRight: 120 }}>{title || 'Fix my plumbing'}</Text>
+                    <View style={{ flexDirection: "row", justifyContent:"space-between" }}>
+                        <View>
+                            <Text style={{fontSize:20}}>{title || 'Fix my plumbing'}</Text>
+                            <Text>{location || 'Madina'}</Text>
+                        </View>
                         <Text style={{ fontWeight: "bold", fontSize: 20 }}>{`GHC${amount}`}</Text>
                     </View>
                 </TouchableOpacity>
-                <Text>{location || 'Madina'}</Text>
+               
             </View>
             <Text style={styles.emptyText}></Text>
         </>
@@ -49,8 +52,8 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     tasks: {
-        marginLeft: 15,
-        marginTop: 15
+        marginTop: 15,
+        marginHorizontal:20
     }
 })
 

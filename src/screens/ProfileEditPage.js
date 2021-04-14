@@ -188,7 +188,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
-                        setType('view')
+                        type === 'edit'? setType('view') : navigation.goBack()
                     }}>
                         <View style={{
                             backgroundColor: "#429ef5", width: 120, height: 45,
