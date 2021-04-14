@@ -6,7 +6,7 @@ import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 export default function ActivityItem(props) { 
     const {title, amount, location, isCompleted, date, id } = props.data
     // const amt = numberWithCommas(amount)
-    const icon = isCompleted? "checkbox-marked-circle" : "circle-with-cross"
+    const icon = isCompleted? "checkbox-marked-circle" : "close-circle"
     const color = isCompleted? "green" : "red"
     const time = new Date(date.seconds * 1000).toLocaleString()
     
