@@ -158,7 +158,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <View style={{
                         backgroundColor: "#290f59", width: 200, height: 45,
                         marginTop: 40,
-                        marginLeft: 30,
+                        marginHorizontal: 50,
                         borderRadius: 5
                     }}>
                         <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Create </Text>

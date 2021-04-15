@@ -22,7 +22,7 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
                 }}>
                     <AntDesign name="back" size={24} color="black" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={styles.profile}>PROFILE</Text>
+                <Text style={styles.profile}>Profile</Text>
             </View>
 
             <TouchableOpacity onPress={() => {
@@ -33,34 +33,34 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
                 <Text style={styles.location}>{user?.address || 'Los Angeles,City'}</Text>
             </TouchableOpacity>
 
-            <View style={styles.info}>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('MyTasks')
                 }}>
-                    <Text style={{ fontSize: 17, marginLeft: 45 }}> My Tasks</Text>
-                </TouchableOpacity>
-                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 210 }} />
+            <View style={styles.info}>
+                    <Text style={{ fontSize: 17,  }}> My Tasks</Text>
+                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 180 }} />
             </View>
+                </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 
-            <View style={styles.info}>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Account')
                 }}>
-                    <Text style={{ fontSize: 17, marginLeft: 45 }}>Account</Text>
-                </TouchableOpacity>
+            <View style={styles.info}>
+                    <Text style={{ fontSize: 17, }}>Account</Text>
                 <AntDesign name="right" size={24} color="black" style={{ marginLeft: 190 }} />
             </View>
+                </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 
-            <View style={styles.info}>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Activity')
                 }}>
-                    <Text style={{ fontSize: 17, marginLeft: 45 }}>Activity</Text>
-                </TouchableOpacity>
+            <View style={styles.info}>
+                    <Text style={{ fontSize: 17, }}>Activity</Text>
                 <AntDesign name="right" size={24} color="black" style={{ marginLeft: 200 }} />
             </View>
+                </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
 
 
