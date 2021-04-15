@@ -18,17 +18,17 @@ function CreateTaskPage({ navigation, appState, route }) {
                 <TouchableOpacity onPress={() => {
                     navigation.goBack()
                 }}>
-                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                    <AntDesign name="back" size={24} color="#290f59" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 80, fontWeight: "bold", fontSize: 25 }} >APPLICANTS</Text>
+                <Text style={{ color: "#290f59", marginLeft: 80, fontWeight: "bold", fontSize: 25 }} >Applicants</Text>
             </View>
 
                 
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text>
 
                 <View style={{alignItems:"center",marginTop:10}}>
-                    <Text style={{ fontSize: 30, fontWeight: "bold" }}>{task.title ||'Task Name'}</Text>
-                    <Text style={{ fontSize: 12 }}>{task.description || 'Description'}</Text>
+                    <Text style={{ fontSize: 30, fontWeight: "bold",color:"#5e5a63" }}>{task.title ||'Task Name'}</Text>
+                    <Text style={{ fontSize: 12,color:"#5e5a63"  }}>{task.description || 'Description'}</Text>
                 </View>
 
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10 }}></Text>
@@ -39,7 +39,7 @@ function CreateTaskPage({ navigation, appState, route }) {
                     })
                     : 
                     <View>
-                        <Text style={{textAlign: "center", marginTop: 10}}>There are no applicants yet</Text>
+                        <Text style={{textAlign: "center", marginTop: 10,}}>There are no applicants yet</Text>
                     </View>
                 }
 

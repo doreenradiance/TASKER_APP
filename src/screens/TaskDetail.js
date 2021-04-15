@@ -54,13 +54,13 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
             <Text style={{ alignSelf: "center", color: "#290f59", fontSize: 25, marginTop: 25 }}>{title ||'Fix Plumbing'}</Text>
             <Entypo name="location" size={24} color="#6746a6" style={{ alignSelf: "center", marginTop: 30 }} />
-            <Text style={{ alignSelf: "center", marginVertical: 5 }}>{location || '#Los Angeles City'}</Text>
+            <Text style={{ alignSelf: "center", marginVertical: 5,color:"#5e5a63"}}>{location || '#Los Angeles City'}</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginVertical: 10, marginLeft: 25 }}></Text>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 20 }}>
                 <Fontisto name="table-2" size={25} color="#65616b" style={{ marginTop: 10, marginRight: 5 }} />
                 <View style={{ marginTop: 8, marginLeft: 25 }}>
-                    <Text>{description || 'Lorem Ipsum is simply dummy'}</Text>
+                    <Text style={{color:"#5e5a63"}}>{description || 'Lorem Ipsum is simply dummy'}</Text>
                     {/* <Text>text of the printing and</Text>
                     <Text>typesetting industry.Lorem Ipsum is simply </Text>
                     <Text>dummy text of the printing and</Text>
@@ -70,17 +70,17 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 50 }}>
                 <Ionicons name="alarm" size={25} color="#65616b" style={{ marginRight: 35 }} />
-                <Text>{time || 'Today, 8:25am'}</Text>
+                <Text style={{color:"#5e5a63"}}>{time || 'Today, 8:25am'}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
             <Entypo name="phone" size={24} color="#65616b" style={{ marginRight: 35 }}/>
-            <Text>{phone|| '2333556477'}</Text>
+            <Text style={{color:"#5e5a63"}}>{phone|| '2333556477'}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
                 <FontAwesome5 name="sort-amount-up" size={24} color="#65616b" style={{ marginRight: 35 }} />
-                <Text>{`GHC ${amount}`}</Text>
+                <Text style={{color:"#5e5a63"}}>{`GHC ${amount}`}</Text>
             </View>
 
             {
