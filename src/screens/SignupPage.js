@@ -24,7 +24,7 @@ function StartupPage({ navigation, createEmailAccount }) {
                 }}>
                     <AntDesign name="back" size={24} color="white" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={styles.login}>SIGN UP</Text>
+                <Text style={styles.signup}>SIGN UP</Text>
             </View>
             
             <View style={styles.inputs}>
@@ -73,7 +73,7 @@ function StartupPage({ navigation, createEmailAccount }) {
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
                 <Text 
-                    style={{ color: "#429ef5", marginLeft: 5 }}
+                    style={{ color: "#290f59", marginLeft: 5 }}
                     onPress={() => navigation.navigate("Login")}
                 >Login</Text>
 
@@ -91,16 +91,16 @@ const styles = StyleSheet.create({
     header: {
         flex: 0.6,
         width: "100%",
-        backgroundColor: "#429ef5",
+        backgroundColor: "#290f59",
         flexDirection: "row",
         alignItems: "flex-start",
     },
     icon: {
-        marginTop: 90,
+        marginVertical: 50,
         marginLeft: 40
     },
-    login: {
-        marginTop: 90,
+    signup: {
+        marginVertical: 50,
         color: "white",
         marginLeft: 85,
         fontWeight: "bold",
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         marginVertical: 15
     },
     signupTextButton: {
-        backgroundColor: "#429ef5",
+        backgroundColor: "#290f59",
         height: 50,
         width: 250,
         textAlign: "center",

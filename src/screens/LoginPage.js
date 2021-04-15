@@ -71,7 +71,7 @@ function LoginPage({ navigation, login }) {
             <View style={styles.footer}>
                 <Text>Don't have an account?</Text>
                 <Text
-                    style={{ color: "#429ef5", marginLeft: 5 }}
+                    style={{ color: "#290f59", marginLeft: 5 }}
                     onPress={() => navigation.navigate('Signup')}
                 >Sign up</Text>
 
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     header: {
         flex: 0.4,
         width: "100%",
-        backgroundColor: "#429ef5",
+        backgroundColor: "#290f59",
         flexDirection: "row",
         alignItems: "flex-start",
     },
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     loginTextButton: {
-        backgroundColor: "#429ef5",
+        backgroundColor: "#290f59",
         height: 50,
         width: 250,
         textAlign: "center",

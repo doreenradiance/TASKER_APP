@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     header: {
         flex:0.6,
         width:"100%",
-        backgroundColor: "#429ef5",
+        backgroundColor: "#290f59",
         justifyContent: "center",
         alignItems:"center",
         height: 80
@@ -67,18 +67,20 @@ const styles = StyleSheet.create({
     
     },
     signupTextButton: {
-        backgroundColor: "#429ef5",
+        backgroundColor: "#290f59",
         height: 50,
         width: 250,
         textAlign: "center",
         borderRadius: 4,
     },
     loginTextButton: {
-        backgroundColor: "#429ef5",
+        backgroundColor: "white",
         height: 50,
         width: 250,
         textAlign: "center",
         borderRadius: 4,
+        borderWidth:2, 
+        borderColor:"#290f59",
        marginTop:50
     },
     signupText:{
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
         marginTop:15
     },
     loginText:{
-        color:"white",
+        color:"#290f59",
         alignSelf:"center",
         marginTop:15
     },
