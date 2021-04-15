@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View, Image } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Octicons, FontAwesome5 } from '@expo/vector-icons';
 import { connect } from 'react-redux'
 import { appliedToTasks, getAllTasks } from '../redux/actions/taskActions';
 import TaskItem from '../components/TaskItem';
@@ -9,8 +9,8 @@ import TaskItem from '../components/TaskItem';
 
 
 
-function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
-    const {tasks, user} = appState
+function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
+    const { tasks, user } = appState
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -21,9 +21,9 @@ function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
         try {
             setLoading(true)
             appliedToTasks()
-        }catch (e) {
+        } catch (e) {
 
-        }finally {
+        } finally {
             setLoading(false)
         }
     }
@@ -33,11 +33,11 @@ function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
         try {
             setLoading(true)
             getAllTasks()
-        }catch (e) {
+        } catch (e) {
 
-        }finally {
+        } finally {
             setLoading(false)
-        } 
+        }
     }
 
     return (
@@ -54,50 +54,37 @@ function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')
                 }}>
-                <AntDesign name="ellipsis1" size={30} color="#290f59" style={{ marginTop: 5 }} />
+                    <AntDesign name="ellipsis1" size={30} color="#65616b" style={{ marginTop: 5 }} />
                 </TouchableOpacity>
             </View>
             <Text style={styles.emptyText}></Text>
 
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "row",justifyContent:"space-around" }}>
                 <TouchableOpacity onPress={getTasks}>
-                    <View style={{
-                        backgroundColor: "#290f59", width: 130, height: 45,
-                        marginTop: 10,
-                        marginLeft: 5,
-                        borderRadius: 5
-                    }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}>Tasks</Text>
-                    </View>
+                        <Text style={{ color: "#290f59", fontSize:20, textAlign: "center", marginTop: 10,marginRight:100 }}>Tasks</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={getApplied}>
-                    <View style={{
-                        backgroundColor: "#290f59", width: 130, height: 45,
-                        marginTop: 10,
-                        marginLeft: 30,
-                        borderRadius: 5,
-                        }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
-                    </View>
+                        <Text style={{ color: "#290f59", fontSize:20,textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
                 </TouchableOpacity>
             </View>
+            <Text style={styles.emptyText}></Text>
 
 
             <ScrollView>
                 {
-                    !loading? 
-                    tasks[0]? tasks.map(task => {
-                        return <TaskItem key={task.id} data={task} navigation={navigation} />
-                    })
-                    : 
-                    <View style={{textAlign: "center", marginTop:10,}}>
-                        <Text>There are no tasks Available</Text>
-                    </View>
-                    : 
-                    <View style={{textAlign: "center", marginTop:10,}}>
-                        <Text style={{opacity: 0.8}}>Loading...</Text>
-                    </View>
+                    !loading ?
+                        tasks[0] ? tasks.map(task => {
+                            return <TaskItem key={task.id} data={task} navigation={navigation} />
+                        })
+                            :
+                            <View style={{ textAlign: "center", marginTop: 10, }}>
+                                <Text>There are no tasks Available</Text>
+                            </View>
+                        :
+                        <View style={{ textAlign: "center", marginTop: 10, }}>
+                            <Text style={{ opacity: 0.8 }}>Loading...</Text>
+                        </View>
                 }
 
                 {/* <View style={styles.tasks} >
@@ -262,4 +249,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {getAllTasks, appliedToTasks})(TasksPage)
+export default connect(mapStateToProps, { getAllTasks, appliedToTasks })(TasksPage)
