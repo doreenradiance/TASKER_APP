@@ -16,11 +16,11 @@ export default function AccountHistoryItem(props) {
             <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 20, marginTop: 20 }}>
                 <View style={{ flexDirection: "row" }}>
                     <AntDesign name={icon} size={23} color={color} style={{ marginRight: 15, marginTop: 10 }} />
-                    <Text style={{ marginRight: 50 }}>{type}</Text>
+                    <Text style={{ marginRight: 50,color:"#5e5a63" }}>{type}</Text>
                 </View>
-                <Text style={{ marginLeft: 30, fontSize: 20 }}>{`GHC ${amt || 65}`}</Text>
+                <Text style={{ marginLeft: 30, fontSize: 20,color:"#5e5a63"}}>{`GHC ${amt || 65}`}</Text>
             </View>
-            <Text style={{ marginLeft: 60 }}>{time || 'Today, 12:45am'}</Text>
+            <Text style={{ marginLeft: 60,color:"#5e5a63" }}>{time || 'Today, 12:45am'}</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginTop: 10, marginLeft: 20 }}></Text>
         </>
     )
