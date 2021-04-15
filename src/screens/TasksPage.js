@@ -48,13 +48,13 @@ function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
                 }}>
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginRight: 20 }} />
                 </TouchableOpacity> */}
-                <Text style={{ color: "#429ef5", fontSize: 25, marginRight: 110 }}>Tasks</Text>
+                <Text style={{ color: "#290f59", fontSize: 25, marginRight: 110 }}>Tasks</Text>
                 <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
 
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')
                 }}>
-                <AntDesign name="ellipsis1" size={30} color="#429ef5" style={{ marginTop: 5 }} />
+                <AntDesign name="ellipsis1" size={30} color="#290f59" style={{ marginTop: 5 }} />
                 </TouchableOpacity>
             </View>
             <Text style={styles.emptyText}></Text>
@@ -62,7 +62,7 @@ function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
             <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity onPress={getTasks}>
                     <View style={{
-                        backgroundColor: "#429ef5", width: 130, height: 45,
+                        backgroundColor: "#290f59", width: 130, height: 45,
                         marginTop: 10,
                         marginLeft: 5,
                         borderRadius: 5
@@ -73,7 +73,7 @@ function TasksPage({navigation, getAllTasks, appliedToTasks, appState }) {
 
                 <TouchableOpacity onPress={getApplied}>
                     <View style={{
-                        backgroundColor: "#429ef5", width: 130, height: 45,
+                        backgroundColor: "#290f59", width: 130, height: 45,
                         marginTop: 10,
                         marginLeft: 30,
                         borderRadius: 5,

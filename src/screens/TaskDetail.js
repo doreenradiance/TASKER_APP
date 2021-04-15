@@ -46,19 +46,19 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                 <TouchableOpacity onPress={()=>{
                     navigation.goBack()
                 }}>
-                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                    <AntDesign name="back" size={24} color="#290f59" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.emptyText}></Text>
             </View>
 
 
-            <Text style={{ alignSelf: "center", color: "#429ef5", fontSize: 25, marginTop: 25 }}>{title ||'Fix Plumbing'}</Text>
-            <Entypo name="location" size={24} color="#429ef5" style={{ alignSelf: "center", marginTop: 30 }} />
+            <Text style={{ alignSelf: "center", color: "#290f59", fontSize: 25, marginTop: 25 }}>{title ||'Fix Plumbing'}</Text>
+            <Entypo name="location" size={24} color="#6746a6" style={{ alignSelf: "center", marginTop: 30 }} />
             <Text style={{ alignSelf: "center", marginVertical: 5 }}>{location || '#Los Angeles City'}</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 310, marginVertical: 10, marginLeft: 25 }}></Text>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 20 }}>
-                <Fontisto name="table-2" size={25} color="#429ef5" style={{ marginTop: 10, marginRight: 5 }} />
+                <Fontisto name="table-2" size={25} color="#65616b" style={{ marginTop: 10, marginRight: 5 }} />
                 <View style={{ marginTop: 8, marginLeft: 25 }}>
                     <Text>{description || 'Lorem Ipsum is simply dummy'}</Text>
                     {/* <Text>text of the printing and</Text>
@@ -69,17 +69,17 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 50 }}>
-                <Ionicons name="alarm" size={25} color="#429ef5" style={{ marginRight: 35 }} />
+                <Ionicons name="alarm" size={25} color="#65616b" style={{ marginRight: 35 }} />
                 <Text>{time || 'Today, 8:25am'}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
-            <Entypo name="phone" size={24} color="#429ef5" style={{ marginRight: 35 }}/>
+            <Entypo name="phone" size={24} color="#65616b" style={{ marginRight: 35 }}/>
             <Text>{phone|| '2333556477'}</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginLeft: 15, marginTop: 30 }}>
-                <FontAwesome5 name="sort-amount-up" size={24} color="#429ef5" style={{ marginRight: 35 }} />
+                <FontAwesome5 name="sort-amount-up" size={24} color="#65616b" style={{ marginRight: 35 }} />
                 <Text>{`GHC ${amount}`}</Text>
             </View>
 
@@ -99,7 +99,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
                         <TouchableOpacity disabled={taskDetails?.applied} onPress={onApply}>
                             <View style={{
-                                backgroundColor: "#429ef5", width: 130, height: 45,
+                                backgroundColor: "#290f59", width: 130, height: 45,
                                 marginTop: 40,
                                 marginLeft: 30,
                                 borderRadius: 5,
