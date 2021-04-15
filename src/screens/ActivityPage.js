@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import { AntDesign, MaterialCommunityIcons, Entypo,Octicons, FontAwesome5 } from '@expo/vector-icons';
 import {connect} from 'react-redux'
 import { allTaskActivities } from '../redux/actions/taskActions';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -96,6 +96,10 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
 
 
             <Text style={{ color: "#429ef5", textAlign: "center", marginTop: 20 }}>See All</Text> */}
+        <View style={{flexDirection:"row",justifyContent:"space-around",marginTop:10}}>
+                <Octicons name="tasklist" size={24} color="#65616b" />
+                <FontAwesome5 name="tasks" size={24} color="#65616b" />
+            </View>
         </View>
     )
 }
