@@ -35,7 +35,7 @@ function LoginPage({ navigation, login }) {
            
             <View style={styles.inputs}>
                 <View style={styles.email}>
-                    <Text>Email</Text>
+                    <Text style={{color:"#5e5a63"}}>Email</Text>
                     <TextInput style={styles.input}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Email"
@@ -46,7 +46,7 @@ function LoginPage({ navigation, login }) {
 
 
                 <View style={styles.password}>
-                    <Text>Password</Text>
+                    <Text style={{color:"#5e5a63"}}>Password</Text>
                     <TextInput style={styles.input2}
                         placeholderTextColor="#aaaaaa"
                         placeholder="Password"
@@ -69,7 +69,7 @@ function LoginPage({ navigation, login }) {
             </TouchableOpacity>
 
             <View style={styles.footer}>
-                <Text>Don't have an account?</Text>
+                <Text style={{color:"#6f6b75"}}>Don't have an account?</Text>
                 <Text
                     style={{ color: "#290f59", marginLeft: 5 }}
                     onPress={() => navigation.navigate('Signup')}
@@ -134,7 +134,8 @@ const styles = StyleSheet.create({
     },
     footer: {
         flexDirection: "row",
-        marginTop: 30
+        marginTop: 30,
+        // color:"#dde3ed"
     }
 })
 

@@ -14,10 +14,10 @@ function TaskItem (props) {
                 }}>
                     <View style={{ flexDirection: "row", justifyContent:"space-between",marginTop:10 }}>
                         <View>
-                            <Text style={{fontSize:20}}>{title || 'Fix my plumbing'}</Text>
-                            <Text>{location || 'Madina'}</Text>
+                            <Text style={{fontSize:20,color:"#5e5a63"}}>{title || 'Fix my plumbing'}</Text>
+                            <Text style={{color:"#5e5a63"}}>{location || 'Madina'}</Text>
                         </View>
-                        <Text style={{ fontWeight: "bold", fontSize: 20 }}>{`GHC${amount}`}</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 20,color:"#5e5a63" }}>{`GHC${amount}`}</Text>
                     </View>
                 </TouchableOpacity>
                

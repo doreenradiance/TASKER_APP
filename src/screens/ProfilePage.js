@@ -37,8 +37,8 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
                     navigation.navigate('MyTasks')
                 }}>
             <View style={styles.info}>
-                    <Text style={{ fontSize: 17,  }}> My Tasks</Text>
-                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 180 }} />
+                    <Text style={{ fontSize: 17, color:"#5e5a63" }}> My Tasks</Text>
+                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 180,color:"#5e5a63" }} />
             </View>
                 </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -47,8 +47,8 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
                     navigation.navigate('Account')
                 }}>
             <View style={styles.info}>
-                    <Text style={{ fontSize: 17, }}>Account</Text>
-                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 190 }} />
+                    <Text style={{ fontSize: 17, color:"#5e5a63"}}>Account</Text>
+                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 190,color:"#5e5a63" }} />
             </View>
                 </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -57,8 +57,8 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
                     navigation.navigate('Activity')
                 }}>
             <View style={styles.info}>
-                    <Text style={{ fontSize: 17, }}>Activity</Text>
-                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 200 }} />
+                    <Text style={{ fontSize: 17,color:"#5e5a63" }}>Activity</Text>
+                <AntDesign name="right" size={24} color="black" style={{ marginLeft: 200,color:"#5e5a63" }} />
             </View>
                 </TouchableOpacity>
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 20 }}></Text>
@@ -82,10 +82,11 @@ const styles = StyleSheet.create({
         marginTop: 80
     },
     icon: {
-        marginLeft: 40
+        marginLeft: 40,
+        color:"#5e5a63"
     },
     profile: {
-        color: "black",
+        color:"#5e5a63",
         marginLeft: 65,
         fontWeight: "bold",
         fontSize: 25

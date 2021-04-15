@@ -75,7 +75,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
             <ScrollView>
                 <View>
-                    <Text>Name</Text>
+                    <Text style={{color:"#5e5a63"}}>Name</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -94,7 +94,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text>Email</Text>
+                    <Text style={{color:"#5e5a63"}}>Email</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -113,7 +113,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text>Address</Text>
+                    <Text style={{color:"#5e5a63"}}>Address</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -132,7 +132,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text>Phone</Text>
+                    <Text style={{color:"#5e5a63"}}>Phone</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -151,7 +151,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text>Skills</Text>
+                    <Text style={{color:"#5e5a63"}}>Skills</Text>
                     {
                         type === "edit" ? (
                             <TextInput
