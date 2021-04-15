@@ -65,7 +65,7 @@ function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={getApplied}>
-                        <Text style={{ color: "#290f59", fontSize:20,textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
+                        <Text style={{ color: "#65616b", fontSize:20,textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
                 </TouchableOpacity>
             </View>
             <Text style={styles.emptyText}></Text>
