@@ -75,9 +75,9 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <TouchableOpacity onPress={() => {
                         navigation.goBack()
                     }}>
-                        <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                        <AntDesign name="back" size={24} color="#290f59" style={styles.icon} />
                     </TouchableOpacity>
-                    <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }} >CREATE TASK</Text>
+                    <Text style={{ color: "#290f59", marginLeft: 50, fontWeight: "bold", fontSize: 25 }} >Create Task</Text>
                 </View>
 
 
@@ -156,7 +156,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
 
                 <TouchableOpacity onPress={onCreateTask}>
                     <View style={{
-                        backgroundColor: "#429ef5", width: 200, height: 45,
+                        backgroundColor: "#290f59", width: 200, height: 45,
                         marginTop: 40,
                         marginLeft: 30,
                         borderRadius: 5

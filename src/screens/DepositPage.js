@@ -28,9 +28,9 @@ function DepositPage({navigation, appState, deposit}) {
                 <TouchableOpacity onPress={() => {
                     navigation.navigate("Account")
                 }}>
-                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                    <AntDesign name="back" size={24} color="#290f59" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 70, marginTop:30,fontWeight: "bold", fontSize: 25 }}>DEPOSIT</Text>
+                <Text style={{ color: "#290f59", marginLeft: 70, marginTop:30,fontWeight: "bold", fontSize: 25 }}>Deposit</Text>
             </View>
 
             <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 370, marginTop: 20 }}></Text>
@@ -63,7 +63,7 @@ function DepositPage({navigation, appState, deposit}) {
             </View>
 
             <TouchableOpacity onPress={onDeposit}>
-                <View style={{ alignSelf: "center", backgroundColor: "green", width: 250, height: 45, marginTop: 70, borderRadius: 10 }}>
+                <View style={{ alignSelf: "center", backgroundColor: "#290f59", width: 250, height: 45, marginTop: 70, borderRadius: 10 }}>
                     <Text style={{ textAlign: "center", color: "white", marginTop: 10, }}>Deposit</Text>
                 </View>
             </TouchableOpacity>

@@ -29,9 +29,9 @@ function MyTasks({navigation, getCreatedTask, appState}) {
                 <TouchableOpacity onPress={()=>{
                     navigation.navigate('Profile')
                 }}>
-                    <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
+                    <AntDesign name="back" size={25} color="#290f59" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>My Tasks</Text>
+                <Text style={{ color: "#290f59", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>My Tasks</Text>
             </View>
 
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
@@ -39,7 +39,7 @@ function MyTasks({navigation, getCreatedTask, appState}) {
             <TouchableOpacity onPress={() => {
                 navigation.navigate('CreateTask')
             }}>
-                <View style={{ alignSelf: "center", backgroundColor: "#429ef5", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
+                <View style={{ alignSelf: "center", backgroundColor: "#290f59", width: 250, height: 45, marginVertical: 10, borderRadius: 10 }}>
                     <Text style={{ textAlign: "center", color: "white", marginTop: 11, }}>Create Task</Text>
                 </View>
             </TouchableOpacity>

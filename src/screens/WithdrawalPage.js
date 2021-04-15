@@ -53,9 +53,9 @@ function WithdrawalPage({ navigation, withdraw, appState }) {
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('Account')
                     }}>
-                        <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 20 }} />
+                        <AntDesign name="back" size={25} color="#290f59" style={{ marginLeft: 30, marginRight: 20 }} />
                     </TouchableOpacity>
-                    <Text style={{ color: "#429ef5", marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>Cash Withdrawal</Text>
+                    <Text style={{ color: "#290f59", marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>Cash Withdrawal</Text>
                 </View>
 
 
@@ -93,7 +93,7 @@ function WithdrawalPage({ navigation, withdraw, appState }) {
                 </View>
 
                 <TouchableOpacity onPress={onWithdraw}>
-                    <View style={{ alignSelf: "center", backgroundColor: "green", width: 150, height: 45, marginTop: 70, borderRadius: 10 }}>
+                    <View style={{ alignSelf: "center", backgroundColor: "#290f59", width: 150, height: 45, marginTop: 70, borderRadius: 10 }}>
                         <Text
                             style={{ textAlign: "center", color: "white", marginTop: 10, }}
                         >Confirm</Text>

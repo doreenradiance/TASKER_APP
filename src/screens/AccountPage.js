@@ -19,9 +19,9 @@ function AccountPage({ navigation, appState }) {
                 <TouchableOpacity onPress={() => {
                     navigation.navigate("Profile")
                 }}>
-                    <AntDesign name="back" size={25} color="#429ef5" style={{ marginLeft: 30, marginRight: 40 }} />
+                    <AntDesign name="back" size={25} color="#290f59" style={{ marginLeft: 30, marginRight: 40 }} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Account</Text>
+                <Text style={{ color: "#290f59", marginLeft: 50, fontWeight: "bold", fontSize: 25 }}>Account</Text>
             </View>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginVertical: 20 }}></Text>
             <ScrollView>
@@ -51,7 +51,7 @@ function AccountPage({ navigation, appState }) {
                 </TouchableOpacity>
                 <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
 
-            <Text style={{ marginLeft: 20, marginTop: 10, color: "#807878" }}>History</Text>
+            <Text style={{ marginLeft: 20, marginTop: 10, color: "#807878" }}>Transaction History</Text>
             <Text style={{ backgroundColor: "#dde3ed", height: 1.5, width: 370, marginTop: 12 }}></Text>
 
             {

@@ -68,9 +68,9 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                 <TouchableOpacity onPress={() => {
                     navigation.goBack()
                 }}>
-                    <AntDesign name="back" size={24} color="#429ef5" style={styles.icon} />
+                    <AntDesign name="back" size={24} color="#290f59" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={{ color: "#429ef5", marginLeft: 90, marginVertical: 30, fontWeight: "bold", fontSize: 25 }}>PROFILE</Text>
+                <Text style={{ color: "#290f59", marginLeft: 90, marginVertical: 30, fontWeight: "bold", fontSize: 25 }}>Profile</Text>
             </View>
 
             <ScrollView>
@@ -178,7 +178,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                         )
                     }}>
                         <View style={{
-                            backgroundColor: "#429ef5", width: 120, height: 45,
+                            backgroundColor: "#6746a6", width: 120, height: 45,
                             marginTop: 40,
                             marginLeft: 30,
                             justifyContent:"space-around",
@@ -192,7 +192,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                         type === 'edit'? setType('view') : navigation.goBack()
                     }}>
                         <View style={{
-                            backgroundColor: "#429ef5", width: 120, height: 45,
+                            backgroundColor: "#6746a6", width: 120, height: 45,
                             marginTop: 40,
                             marginLeft: 30,
                             borderRadius: 5

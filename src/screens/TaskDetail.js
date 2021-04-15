@@ -117,7 +117,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             }
                         }} >
                             <View style={{
-                                backgroundColor: "#429ef5", width: 130, height: 45,
+                                backgroundColor: "#290f59", width: 130, height: 45,
                                 marginTop: 40,
                                 marginLeft: 30,
                                 borderRadius: 5
@@ -137,7 +137,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                             } })
                         }} >
                             <View style={{
-                                backgroundColor: "#429ef5", width: 130, height: 45,
+                                backgroundColor: "#290f59", width: 130, height: 45,
                                 marginTop: 40,
                                 marginLeft: 30,
                                 borderRadius: 5
