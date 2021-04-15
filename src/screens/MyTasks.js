@@ -25,7 +25,7 @@ function MyTasks({navigation, getCreatedTask, appState}) {
 
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row", marginTop: 55 }}>
+            <View style={{ flexDirection: "row", marginTop: 55,}}>
                 <TouchableOpacity onPress={()=>{
                     navigation.navigate('Profile')
                 }}>

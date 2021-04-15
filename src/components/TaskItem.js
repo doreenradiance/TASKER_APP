@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     },
     tasks: {
         marginTop: 15,
-        marginHorizontal:20
+        marginHorizontal:20,
+        // color:"#5e5a63"
     }
 })
 

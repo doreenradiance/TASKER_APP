@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         marginTop: 70
     },
     loginText: {
-        color: "white",
+        color:"white",
         alignSelf: "center",
         marginTop: 10,
         fontSize: 20

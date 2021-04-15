@@ -96,11 +96,12 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
     },
     icon: {
-        marginVertical: 50,
+        marginTop: 70,
+        marginBottom:20,
         marginLeft: 40
     },
     signup: {
-        marginVertical: 50,
+        marginTop: 70,
         color: "white",
         marginLeft: 85,
         fontWeight: "bold",

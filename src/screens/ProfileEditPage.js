@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 function ProfileEditPage({ navigation, appState, editProfile, route }) {
-    const { user:currentUser } = appState
+    const { user: currentUser } = appState
 
 
     const [type, setType] = useState('view')
@@ -38,10 +38,10 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
     useEffect(() => {
-        (async function() {
+        (async function () {
             const userId = route.params?.other
-            
-            if(userId) {
+
+            if (userId) {
                 const user = await getUser(userId)
                 setUser(user)
                 setName(user.name)
@@ -49,14 +49,14 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                 setAddress(user.address)
                 setPhone(user.phone)
                 setSkills(user.skills)
-            }else {
+            } else {
                 setUser(currentUser)
                 setName(currentUser.name)
                 setEmail(currentUser.email)
                 setAddress(currentUser.address)
                 setPhone(currentUser.phone)
                 setSkills(currentUser.skills)
-            }          
+            }
         })()
     }, [appState])
 
@@ -75,7 +75,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
             <ScrollView>
                 <View>
-                    <Text style={{color:"#5e5a63"}}>Name</Text>
+                    <Text style={{ color: "#5e5a63" }}>Name</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -94,7 +94,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text style={{color:"#5e5a63"}}>Email</Text>
+                    <Text style={{ color: "#5e5a63" }}>Email</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -113,7 +113,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text style={{color:"#5e5a63"}}>Address</Text>
+                    <Text style={{ color: "#5e5a63" }}>Address</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -132,7 +132,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text style={{color:"#5e5a63"}}>Phone</Text>
+                    <Text style={{ color: "#5e5a63" }}>Phone</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -151,7 +151,7 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
 
 
                 <View>
-                    <Text style={{color:"#5e5a63"}}>Skills</Text>
+                    <Text style={{ color: "#5e5a63" }}>Skills</Text>
                     {
                         type === "edit" ? (
                             <TextInput
@@ -178,10 +178,10 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                         )
                     }}>
                         <View style={{
-                            backgroundColor: "#6746a6", width: 120, height: 45,
+                            backgroundColor: "#290f59", width: 120, height: 45,
                             marginTop: 40,
-                            marginLeft: 30,
-                            justifyContent:"space-around",
+                            marginLeft: 20,
+                            justifyContent: "space-around",
                             borderRadius: 5
                         }}>
                             <Text style={{ color: "white", textAlign: "center", marginVertical: 10 }}> {type === "edit" ? 'Save' : 'Edit'}</Text>
@@ -189,15 +189,17 @@ function ProfileEditPage({ navigation, appState, editProfile, route }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => {
-                        type === 'edit'? setType('view') : navigation.goBack()
+                        type === 'edit' ? setType('view') : navigation.goBack()
                     }}>
                         <View style={{
-                            backgroundColor: "#6746a6", width: 120, height: 45,
+                            backgroundColor: "white", width: 120, height: 45,
                             marginTop: 40,
                             marginLeft: 30,
-                            borderRadius: 5
+                            borderRadius: 5,
+                             borderWidth: 2,
+                             borderColor:"#290f59",
                         }}>
-                            <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> Cancel</Text>
+                            <Text style={{  textAlign: "center", marginTop: 10, color:"#290f59", }}> Cancel</Text>
                         </View>
                     </TouchableOpacity>
                 </View>}

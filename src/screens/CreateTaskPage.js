@@ -84,7 +84,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
 
                 <View>
                     <View>
-                        <Text style={{ marginTop: 20 }}>Title</Text>
+                        <Text style={{ marginTop: 20,color:"#5e5a63"}}>Title</Text>
                         <TextInput
                             placeholderTextColor="#aaaaaa"
                             placeholder="Enter task name"
@@ -95,7 +95,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 10 }}></Text>
 
                     <View>
-                        <Text style={{ marginTop: 20 }}>Description</Text>
+                        <Text style={{ marginTop: 20,color:"#5e5a63"}}>Description</Text>
                         <TextInput
                             placeholderTextColor="#aaaaaa"
                             placeholder="Task description should be as comprehensive"
@@ -106,7 +106,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 10 }}></Text>
 
                     <View>
-                        <Text style={{ marginTop: 20 }}>Location</Text>
+                        <Text style={{ marginTop: 20,color:"#5e5a63" }}>Location</Text>
                         <TextInput
                             placeholderTextColor="#aaaaaa"
                             placeholder="Enter task location"
@@ -117,7 +117,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 10 }}></Text>
 
                     <View>
-                        <Text style={{ marginTop: 20 }}>Date</Text>
+                        <Text style={{ marginTop: 20,color:"#5e5a63" }}>Date</Text>
                         <Text onPress={() => setShowDatePicker(true)}>{task.date?.toString() || "Enter Date"}</Text>
                         {
                             showDatePicker && (
@@ -131,7 +131,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 10 }}></Text>
 
                     <View>
-                        <Text style={{ marginTop: 20 }}>Phone</Text>
+                        <Text style={{ marginTop: 20,color:"#5e5a63" }}>Phone</Text>
                         <TextInput
                             placeholderTextColor="#aaaaaa"
                             placeholder="Enter mobile number"
@@ -142,7 +142,7 @@ function CreateTaskPage({ navigation, appState, createTask }) {
                     <Text style={{ backgroundColor: "#dde3ed", height: 2, width: 270, marginTop: 10 }}></Text>
 
                     <View>
-                        <Text style={{ marginTop: 20 }}>Amount</Text>
+                        <Text style={{ marginTop: 20,color:"#5e5a63" }}>Amount</Text>
                         <TextInput
                             placeholderTextColor="#aaaaaa"
                             placeholder="Set an amount"
