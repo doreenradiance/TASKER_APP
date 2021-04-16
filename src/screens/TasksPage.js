@@ -61,7 +61,7 @@ function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
 
             <View style={{ flexDirection: "row",justifyContent:"space-around" }}>
                 <TouchableOpacity onPress={getTasks}>
-                        <Text style={{ color: "#290f59", fontSize:20, textAlign: "center", marginTop: 10,marginRight:100 }}>Tasks</Text>
+                        <Text style={{ color: "#290f59", fontSize:20, textAlign: "center", marginTop: 10,marginRight:50 }}>Browse Tasks</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={getApplied}>
