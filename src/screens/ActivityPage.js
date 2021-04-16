@@ -101,7 +101,7 @@ function ActivityPage({ navigation, allTaskActivities, appState }) {
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')
                 }}>
-                    <AntDesign name="profile" size={24} color="#65616b" />
+                    <AntDesign name="home" size={24} color="#65616b" />
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => {
