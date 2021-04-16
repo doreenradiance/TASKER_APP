@@ -111,8 +111,16 @@ function MyTasks({ navigation, getCreatedTask, appState }) {
             <Text style={{ color: "#429ef5", textAlign: "center", marginTop: 20 }}>See All</Text> */}
             
             <View style={{flexDirection:"row",justifyContent:"space-around",marginTop:10}}>
-                <Octicons name="tasklist" size={24} color="#65616b" />
-                <FontAwesome5 name="tasks" size={24} color="#65616b"  />
+            <TouchableOpacity onPress={() => {
+                    navigation.navigate('Profile')
+                }}>
+            <AntDesign name="profile" size={24} color="#65616b" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('MyTasks')}}>
+                <FontAwesome5 name="tasks" size={24} color="#290f59"  />
+                </TouchableOpacity>
             </View>
         </View>
     )

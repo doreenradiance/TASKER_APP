@@ -1,14 +1,14 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AntDesign, MaterialCommunityIcons, Entypo,Octicons, FontAwesome5 } from '@expo/vector-icons';
-import {connect} from 'react-redux'
+import { AntDesign, MaterialCommunityIcons, Entypo, Octicons, FontAwesome5 } from '@expo/vector-icons';
+import { connect } from 'react-redux'
 import { allTaskActivities } from '../redux/actions/taskActions';
 import { ScrollView } from 'react-native-gesture-handler';
 import ActivityItem from '../components/ActivityItem';
 
-function ActivityPage({navigation, allTaskActivities, appState}) {
-    const {taskActivities, user} = appState
-    
+function ActivityPage({ navigation, allTaskActivities, appState }) {
+    const { taskActivities, user } = appState
+
 
     useEffect(() => {
         allTaskActivities(user.id)
@@ -18,7 +18,7 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: "row", marginTop: 55 }}>
-                <TouchableOpacity onPress={()=>{
+                <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')
                 }}>
                     <AntDesign name="back" size={25} color="#290f59" style={{ marginLeft: 30, marginRight: 40 }} />
@@ -40,13 +40,13 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
 
             <ScrollView>
                 {
-                    taskActivities[0]? taskActivities.map(task => {
+                    taskActivities[0] ? taskActivities.map(task => {
                         return <ActivityItem key={task.id} data={task} navigation={navigation} />
                     })
-                    : 
-                    <View style={{marginLeft:10}}>
-                        <Text>There are no tasks Available</Text>
-                    </View>
+                        :
+                        <View style={{ marginLeft: 10 }}>
+                            <Text>There are no tasks Available</Text>
+                        </View>
                 }
             </ScrollView>
 
@@ -96,9 +96,19 @@ function ActivityPage({navigation, allTaskActivities, appState}) {
 
 
             <Text style={{ color: "#429ef5", textAlign: "center", marginTop: 20 }}>See All</Text> */}
-        <View style={{flexDirection:"row",justifyContent:"space-around",marginTop:10}}>
-                <Octicons name="tasklist" size={24} color="#65616b" />
-                <FontAwesome5 name="tasks" size={24} color="#65616b" />
+            <View style={{ flexDirection: "row", justifyContent: "space-around", marginTop: 10 }}>
+
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Profile')
+                }}>
+                    <AntDesign name="profile" size={24} color="#65616b" />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('MyTasks')
+                }}>
+                    <FontAwesome5 name="tasks" size={24} color="#290f59" />
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -119,4 +129,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {allTaskActivities})(ActivityPage)
+export default connect(mapStateToProps, { allTaskActivities })(ActivityPage)
