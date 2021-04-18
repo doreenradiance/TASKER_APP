@@ -80,7 +80,7 @@ export const getAllTasks = () => {
 
 
 //get one task
-export const getTask = (taskId) => {
+export const getTask = (taskId, cb) => {
     return async (dispatch) => {
         try {
             const taskDetails = await db.collection('tasks').doc(taskId).get() 
@@ -90,8 +90,10 @@ export const getTask = (taskId) => {
             task.applied = !!(task.applications.find(application => application.id === userObj.uid))
             
             dispatch(dispatcher("task_details", task))
+            cb(false)
 
         }catch (e) {
+            cb(false)
             showMessage({
                 message: e.message,
                 type: "danger"
@@ -160,7 +162,7 @@ export const appliedToTasks = () => {
             const tasks = await db.collection("tasks").get()
 
             tasks.forEach(doc => {
-                if(!!doc.data().applications.find(itm => itm.id === userObj.uid) && !doc.data().isAssigned) {
+                if(!!doc.data().applications.find(itm => itm.id === userObj.uid) /*&& !doc.data().isAssigned */) {
                     const data = doc.data()
                     data.id = doc.id
                     return taskList.push(data)

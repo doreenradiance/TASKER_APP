@@ -13,7 +13,7 @@ function WithdrawalPage({ navigation, withdraw, appState }) {
     const balance = numberWithCommas(account)
 
     const [details, setDetails] = useState({
-        withdraw: '0.00',
+        withdraw: '',
         fees: '0.00',
         total: '0.00',
         bal: balance,
@@ -29,9 +29,9 @@ function WithdrawalPage({ navigation, withdraw, appState }) {
         const error = bal < 0 ? 'Not Enough Funds' : withdraw < 100 ? 'Cant Withdraw less than Ghs100' : ''
         setDetails({
             withdraw: numberWithCommas(withdraw),
-            fees: numberWithCommas(fees),
-            total: numberWithCommas(total),
-            bal: numberWithCommas(bal),
+            fees: numberWithCommas(fees.toFixed(2)),
+            total: numberWithCommas(total.toFixed(2)),
+            bal: numberWithCommas(bal.toFixed(2)),
             error
         })
     }
@@ -75,6 +75,7 @@ function WithdrawalPage({ navigation, withdraw, appState }) {
                         />
                     </View>
                 </View>
+                <Text style={styles.cashout}>min withdrawal amount Ghs100</Text>
 
                 <View style={{ flexDirection: "row", marginTop: 20 }}>
                     <Text style={{ marginLeft: 40, marginRight: 110, fontSize: 20 }}>Fee (1%)</Text>
@@ -105,10 +106,15 @@ function WithdrawalPage({ navigation, withdraw, appState }) {
 }
 
 const styles = StyleSheet.create({
-                container: {
-                flex: 1,
+    container: {
+        flex: 1,
         // alignItems: "center",
     },
+    cashout: {
+        fontSize: 10,
+        fontStyle: 'italic',
+        marginLeft: 40,
+    }
 })
 
 

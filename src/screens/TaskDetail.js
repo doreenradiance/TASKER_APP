@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, ScrollView, TouchableOpacity, View } from 'react-native';
 import { AntDesign, Entypo, Fontisto, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import {connect} from "react-redux"
 import { payment } from '../redux/actions/accountActions';
 import { applyForTask, getTask } from '../redux/actions/taskActions';
+import Loader from '../components/Loader';
 
 
 
@@ -19,7 +20,8 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
     //text to be displayed on the button below
     const displayText = !isAssigned? "Not Assigned" : isCompleted? "Completed" : createdBy === user.id? "Make Payment" : "Pending"
-
+    
+    const [loading, setLoading] = useState(false)
 
     const makePayment = () => {
         payment(amount, assignedTo, taskId)
@@ -36,9 +38,11 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
 
 
     useEffect(() => {
-        getTask(taskId)
+        setLoading(true)
+        getTask(taskId, setLoading)
     }, [])
 
+    if (loading) return <Loader />
 
     return (
         <View style={styles.container}>
@@ -105,7 +109,7 @@ function TaskDetail({navigation, appState, payment, applyForTask, getTask, route
                                 borderRadius: 5,
                                 opacity: taskDetails?.applied? 0.5 : 1, 
                                 }}>
-                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {taskDetails?.applied? 'Applied':'Apply'}</Text>
+                                <Text style={{ color: "white", textAlign: "center", marginTop: 10 }}> {isAssigned? 'Closed': taskDetails?.applied? 'Pending' : 'Apply'}</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

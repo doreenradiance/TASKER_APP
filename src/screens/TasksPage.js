@@ -12,6 +12,7 @@ import TaskItem from '../components/TaskItem';
 function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
     const { tasks, user } = appState
     const [loading, setLoading] = useState(false)
+    const [active, setActive] = useState('')
 
     useEffect(() => {
         getTasks()
@@ -20,6 +21,7 @@ function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
     const getApplied = () => {
         try {
             setLoading(true)
+            setActive('apply')
             appliedToTasks()
         } catch (e) {
 
@@ -32,6 +34,7 @@ function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
     const getTasks = () => {
         try {
             setLoading(true)
+            setActive('all')
             getAllTasks()
         } catch (e) {
 
@@ -61,11 +64,11 @@ function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
 
             <View style={{ flexDirection: "row",justifyContent:"space-around" }}>
                 <TouchableOpacity onPress={getTasks}>
-                        <Text style={{ color: "#290f59", fontSize:20, textAlign: "center", marginTop: 10,marginRight:50 }}>Browse Tasks</Text>
+                        <Text style={{ color: active === 'all'? "#290f59" : "#65616b", fontSize:20, textAlign: "center", marginTop: 10,marginRight:50 }}>Browse Tasks</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={getApplied}>
-                        <Text style={{ color: "#65616b", fontSize:20,textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
+                        <Text style={{ color: active === "apply"? "#290f59" : "#65616b", fontSize:20,textAlign: "center", marginTop: 10 }}> {'Applied To'}</Text>
                 </TouchableOpacity>
             </View>
             <Text style={styles.emptyText}></Text>
