@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: "#65616b",
+        color: "#fff"||"#65616b",
         fontStyle: "italic",
         fontSize: 20
     }
