@@ -16,7 +16,13 @@ export const createTask = (task={}, cb) => {
     
     return async (dispatch) => {
         const user = await db.collection("profiles").doc(userObj?.uid).get()
-        if(user.amount < task.amount) throw Error('Not Enough Balance to Created Task');
+        console.log("debbug==>", user.data(), task.amount)
+        if(parseInt(user.data().account) < parseInt(task.amount)) {
+            return showMessage({
+                message: 'Not Enough Balance to Created Task',
+                type: "danger"
+            })
+        };
         db.collection("tasks").add({
             ...task,
             createdBy: userObj.uid,
