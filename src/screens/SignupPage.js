@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, TouchableOpacity, TextInput, View,ScrollView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, TextInput, View,ScrollView,Image } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import {connect} from 'react-redux'
 import { dispatcher, createEmailAccount } from '../redux/actions/authActions';
@@ -18,14 +18,16 @@ function StartupPage({ navigation, createEmailAccount }) {
     return (
         <ScrollView >
             <View style={styles.container}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
                 <TouchableOpacity onPress={() => {
                     navigation.navigate("Startup")
                 }}>
                     <AntDesign name="back" size={24} color="white" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.signup}>SIGN UP</Text>
-            </View>
+            </View> */}
+
+            <Image source={require('../../assets/SU.jpg')} style={{height:150, width:"100%"}}/>
             
             <View style={styles.inputs}>
                 <View style={styles.email}>
@@ -88,13 +90,13 @@ const styles = StyleSheet.create({
         // justifyContent: "space-around",
         alignItems: "center"
     },
-    header: {
-        flex: 0.6,
-        width: "100%",
-        backgroundColor: "#290f59",
-        flexDirection: "row",
-        alignItems: "flex-start",
-    },
+    // header: {
+    //     flex: 0.6,
+    //     width: "100%",
+    //     backgroundColor: "#290f59",
+    //     flexDirection: "row",
+    //     alignItems: "flex-start",
+    // },
     icon: {
         marginTop: 70,
         marginBottom:20,
@@ -108,9 +110,9 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     inputs: {
-        marginTop: 70,
+        // marginTop: 70,
         alignSelf: "flex-start",
-        marginLeft: 50,
+        marginLeft: 10,
     },
     input: {
         marginVertical: 15
