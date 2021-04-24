@@ -40,15 +40,23 @@ export default function App() {
             name="Startup" component={StartupPage}
           />
           <Stack.Screen
-            options={{
-              header: () => null
-            }}
+          options={{
+            title: "LOG IN",
+            headerStyle: {
+              backgroundColor: "#290f59"
+            },
+            headerTintColor: "white",
+            headerTitleAlign: "center",}}
             name="Login" component={LoginPage}
           />
           <Stack.Screen
-            options={{
-              header: () => null
-            }}
+           options={{
+            title: "SIGN UP",
+            headerStyle: {
+              backgroundColor: "#290f59"
+            },
+            headerTintColor: "white",
+            headerTitleAlign: "center",}}
             name="Signup" component={SignupPage}
           />
           <Stack.Screen
