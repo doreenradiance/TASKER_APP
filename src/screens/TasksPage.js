@@ -52,7 +52,7 @@ function TasksPage({ navigation, getAllTasks, appliedToTasks, appState }) {
                     <AntDesign name="back" size={25} color="#429ef5" style={{ marginRight: 20 }} />
                 </TouchableOpacity> */}
                 <Text style={{ color: "#290f59", fontSize: 25, marginRight: 110 }}>Tasks</Text>
-                <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
+                <Image source={require('../../assets/dp1.jpg')} style={styles.DP} />
 
                 <TouchableOpacity onPress={() => {
                     navigation.navigate('Profile')

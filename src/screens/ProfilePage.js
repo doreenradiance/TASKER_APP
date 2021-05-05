@@ -28,7 +28,7 @@ function ProfilePage({ navigation, appState, getCurrentUser }) {
             <TouchableOpacity onPress={() => {
                 navigation.navigate("ProfileEdit")
             }}>
-                <Image source={require('../../assets/DP.jpg')} style={styles.DP} />
+                <Image source={require('../../assets/dp1.jpg')} style={styles.DP} />
                 <Text style={styles.name}>{user?.name || 'Hanson McQueen'}</Text>
                 <Text style={styles.location}>{user?.address || 'Los Angeles,City'}</Text>
             </TouchableOpacity>
